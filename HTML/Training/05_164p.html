@@ -8,8 +8,14 @@
     <title>Document</title>
     <style>
         fieldset {
-            padding: 10px 40px 20px;
-            width: 500px;
+            padding: 20px 40px;
+            width: 520px;
+        }
+
+        /* line-height 를 주면 행간 조정 가능.
+        (line-height 를 통해서 각 줄이 실질적으로 차지하는 공간을 정할 수 있다.)*/
+        label {
+            line-height: 30px;
         }
     </style>
 </head>
@@ -25,8 +31,8 @@
                 <label for="name">이름</label>
                 <input type="text" name="name" id="name" required placeholder="공백 없이 입력하세요">
                 <br>
-                <label for="number">연락처</label>
-                <input type="number" name="number" id="number">
+                <label for="tel">연락처</label>
+                <input type="tel" name="tel" id="tel">
             </blockquote>
             <h4>지원 분야</h4>
             <blockquote>
@@ -41,7 +47,7 @@
                 <br>
             </blockquote>
             <h4>지원 동기</h4>
-            <textarea name="motive" id="motive" cols="60" rows="5" placeholder="봉사 지원 동기를 간략히 써 주세요."></textarea>
+            <textarea name="motive" id="motive" cols="60" rows="5" placeholder="본사 지원 동기를 간략히 써 주세요."></textarea>
             <br>
             <input type="submit" id="submit" value="접수하기">
             <input type="reset" id="reset" value="다시 쓰기">

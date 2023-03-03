@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #con {
+            width: 520px;
+            border: 1px solid black;
+            padding: 20px 40px;
+            margin: auto;
+        }
+
+        fieldset {
+            border: none;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        /* list-style-type: none 으로 리스트 동그라미 없애기 */
+        li {
+            line-height: 30px;
+        }
+
+        /* line-height 를 통해서 각 줄이 실질적으로 차지하는 공간을 정할 수 있다. */
+    </style>
+</head>
+
+<body>
+    <div id="con">
+        <h1>프런트엔드 개발자 지원서</h1>
+        <p>HTML, CSS, 자바스크립트의 기술을 이해하고 실무 경험이 있는 분을 찾습니다.</p>
+        <hr>
+        <form action="">
+            <h4>개인 정보</h4>
+            <ul>
+                <li>
+                    <label for="name">이름</label>
+                    <input type="text" name="name" id="name" required placeholder="공백 없이 입력하세요">
+                </li>
+                <li>
+                    <label for="tel">연락처</label>
+                    <input type="tel" name="tel" id="tel">
+                </li>
+            </ul>
+            <h4>지원 분야</h4>
+            <ul>
+                <li>
+                    <!-- 명시적 라벨 -->
+                    <input type="radio" name="check" value="w_p" id="w_p" required>
+                    <label for="w_p">웹 퍼블리싱</label>
+                </li>
+                <li>
+                    <input type="radio" name="check" value="w_a" id="w_a">
+                    <label for="w_a">웹 어플리케이션 개발</label>
+                </li>
+                <li>
+                    <!-- 암시적 라벨 추천은 안 함. -->
+                    <label for="impr"><input type="radio" name="check" value="impr" id="impr"> 개발 환경 개선</label>
+                </li>
+            </ul>
+            <h4>지원 동기</h4>
+            <textarea name="motive" id="motive" cols="60" rows="5" placeholder="본사 지원 동기를 간략히 써 주세요."></textarea>
+            <br>
+            <input type="submit" id="submit" value="접수하기">
+            <input type="reset" id="reset" value="다시 쓰기">
+        </form>
+    </div>
+
+
+</body>
+
+</html>

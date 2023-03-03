@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 전체 선택자 : * {속성: 값;} */
+        * {
+            margin: 0;
+        }
+
+        /* 타입 선택자 : 태그명 {스타일 규칙} */
+        h1 {
+            color: dodgerblue;
+        }
+
+        /* 클래스 선택자 : .클래스명 {스타일 규칙} */
+        .bk_gray {
+            background-color: gray;
+        }
+
+        /* id 선택자 : #아이디명 {스타일 규칙} */
+        #cook1 {
+            font-size: large;
+        }
+
+        /* 그룹 선택자 : 선택자1, 선택자2, ... {스타일 규칙} */
+        p, em {
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bk_gray">
+        <h1>요리</h1>
+        <span id="cook1">탕수육</span>
+        <p>탕수육 영어로 아시는 분?</p>
+        <em>아~ 탕수육</em>
+    </div>
+</body>
+
+</html>
