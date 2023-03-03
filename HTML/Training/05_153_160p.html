@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset {
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>회원 가입을 환영합니다</h1>
+
+    <form action="">
+        <fieldset>
+            <legend>사용자 정보</legend>
+            <ul>
+                <li>
+                    <!--입력하고 전송하면 name id 값도 전송되므로 name과 id는 입력하는것이 좋다.-->
+                    <label for="id">아이디</label>
+                    <input type="text" id="id" name="id" autofocus required placeholder="4자 ~ 10자 사이, 공백없이"
+                        minlength="4" maxlength="10">
+                </li>
+                <li>
+                    <label for="email">이메일</label>
+                    <input type="email" name="email" id="email">
+                </li>
+                <li>
+                    <label for="pw">비밀번호</label>
+                    <input type="password" name="pw" id="pw" required placeholder="문자와 숫자, 특수 기호 포함">
+                </li>
+                <li>
+                    <label for="pw_check">비밀번호 확인</label>
+                    <input type="password" name="pw_check" id="pw_check" required>
+                </li>
+                <li>
+                    <!-- <label for="route">가입 경로</label> -->
+                    <span>가입 경로</span>
+                    <select name="route" id="route">
+                        <option value="0">블로그</option>
+                        <option value="1">지인소개</option>
+                        <option value="2">기타</option>
+                    </select>
+                </li>
+
+                <li>
+                    <label for="memo">메모</label>
+                    <br>
+                    <textarea name="memo" id="memo" cols="40" rows="4" placeholder="남길 말씀이 있다면 여기에"></textarea>
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset>
+            <legend>이벤트와 새로운 소식</legend>
+            <div>
+                <input type="radio" name="mailing" id="mail_y" value="mail_y">
+                <label for="mail_y">메일 수신</label>
+
+                <input type="radio" name="mailing" id="mail_n" value="mail_n" checked>
+                <label for="mail_n">메일 수신 안 함</label>
+            </div>
+            <!-- 나중에 다른 주제의 radio가 추가될 때 radio의 범위를 잘 보기 위해서
+            같은 주제는 div등으로 그룹화 시킨다. -->
+        </fieldset>
+        <input type="submit" value="가입하기">
+        <input type="reset" value="취소">
+        <!-- button을 써도 동작은 하지만 input type=""으로 브라우저에서 인식은 하나,
+        각각의 브라우저의 인식이 다를 수 있다. button 사용은 추천되지 않음. -->
+    </form>
+</body>
+
+</html>

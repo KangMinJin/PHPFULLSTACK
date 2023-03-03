@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- action은 입력받은 데이터를 저장할 서버 프로그램 지정 -->
+    <!-- method="get" 은 입력한 정보가 다 보여지므로 보안성이 낮음.
+    그러므로 거의 method="post" 사용.-->
+    <form action="">
+        <fieldset>
+            <legend>고객 정보</legend>
+            <label for="id">ID</label>
+            <input type="text" name="id" id="id" maxlength="10">
+            <br>
+            <!-- 명시적 label -->
+            <!-- 화면에서 입력창 옆의 label의 ID라는 텍스트를 눌러도
+                입력창으로 포커스가 이동한다.유저의 편의성을 위해서 사용.
+            label for="" 와 input의 id="" 가 달라도 실행은 되나 같아야 좋다.-->
+            <!-- input의 name은 중복 가능하나 id는 유일해야한다. -->
+            <!-- 암시적 label. 명시적으로 작성하길 권장-->
+            <!-- <label>
+                ID_1
+                <input type="text" name="id_1" id="id_1">
+            </label> -->
+
+            <!-- 패스워드 입력창은 type을 password로 주면 입력창에 정보가
+                가려진다 보이지 않으므로 보안성 향상. -->
+            <label for="pw">PW</label>
+            <input type="password" name="pw" id="pw" maxlength="15">
+            <!-- <br>
+            <label for="search">search</label>
+            <input type="search" name="search" id="search">
+            <br>
+            <label for="url">url</label>
+            <input type="url" name="url" id="url">
+            <br>
+            <label for="email">email</label>
+            <input type="email" name="email" id="email">
+            <br>
+            <label for="tel">tel</label>
+            <input type="tel" name="tel" id="tel"> -->
+            <!-- <br>
+            <br> -->
+            <!-- value에 셋팅 된 값이 벡엔드(서버)로 넘어간다. -->
+            <!-- <ul>
+                <li>
+                    <label for="sb">딸기</label>
+                    <input value="1" type="checkbox" name="sb" id="sb">
+                </li>
+                <li>
+                    <label for="banana">바나나</label>
+                    <input value="2" type="checkbox" name="banana" id="banana">
+                </li>
+                <li>
+                    <label for="wm">수박</label>
+                    <input value="3" type="checkbox" name="wm" id="wm">
+                </li>
+            </ul>
+            <br>
+            <ul>
+                <li>
+                    <label for="r_sb">딸기</label>
+                    <input type="radio" name="fruit" id="r_sb">
+                </li>
+                <li>
+                    <label for="r_banana">바나나</label>
+                    <input type="radio" name="fruit" id="r_banana">
+                </li>
+                <li>
+                    <label for="r_wm">수박</label>
+                    <input type="radio" name="fruit" id="r_wm">
+                </li>
+            </ul> -->
+            <!-- <label for="number">Number</label>
+            <input type="number" id="number" value="3" min="1" max="5"> -->
+            <!-- value는 초기값설정 -->
+            <!-- <br>
+            <br>
+            <label for="range">Range</label>
+            <input type="range" value="3" min="1" max="5">
+            <br>
+            <br>
+            <label for="date">Date</label>
+            <input type="date" min="2023-03-01" max="2023-03-10"> -->
+            <br>
+            <br>
+            <label for="submit"></label>
+            <input type="submit" value="submit">
+            <!-- value 추가해주면 버튼 안의 내용이 바뀐다. -->
+
+            <label for="reset"></label>
+            <input type="reset" value="reset">
+            <!-- 같은 form 안에 있는 다른 input태그에 적어둔 내용 초기화. -->
+
+            <label for="button"></label>
+            <input type="button" value="button">
+            <!-- <button>버튼</button> -->
+
+            <!-- hidden은 숨겨져있는 input태그. -->
+            <input type="hidden" value="hidden_1">
+        </fieldset>
+        <fieldset>
+            <legend>배송 정보</legend>
+        </fieldset>
+    </form>
+    <label for="id1">ID</label>
+    <input type="text" name="id1" id="id1" maxlength="10">
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <fieldset>
+            <legend>고객 정보</legend>
+            <label for="id">아이디</label>
+            <input type="text" required autofocus placeholder="10자까지 입력해주세요.">
+            <!-- 필수 입력사항을 지정할 때 유저에게 알리기위해 required 사용. -->
+            <br>
+            <label for="pw">패스워드</label>
+            <input type="password" placeholder="비밀번호">
+            <br>
+            <!-- 읽기 전용. 입력하고 넘어간 부분 표현할때 사용. -->
+            <label for="readonly">참조사항</label>
+            <input type="text" readonly value="참조">
+            <br>
+            <br>
+            <ul>
+                <li>
+                    <label for="sb">딸기</label>
+                    <input value="1" type="checkbox" name="sb" id="sb">
+                </li>
+                <li>
+                    <label for="banana">바나나</label>
+                    <input checked value="2" type="checkbox" name="banana" id="banana">
+                </li>
+                <li>
+                    <label for="wm">수박</label>
+                    <input value="3" type="checkbox" name="wm" id="wm">
+                </li>
+            </ul>
+            <br>
+            <br>
+            <ul>
+                <li>
+                    <label for="r_sb">딸기</label>
+                    <input type="radio" name="fruit" id="r_sb">
+                </li>
+                <li>
+                    <label for="r_banana">바나나</label>
+                    <input type="radio" name="fruit" id="r_banana">
+                </li>
+                <li>
+                    <label for="r_wm">수박</label>
+                    <input checked type="radio" name="fruit" id="r_wm">
+                </li>
+            </ul>
+            <br>
+            <input type="submit">
+        </fieldset>
+    </form>
+</body>
+
+</html>
