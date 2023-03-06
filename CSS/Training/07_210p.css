@@ -1,0 +1,26 @@
+h1 {
+    color: brown;
+    border: 3px solid orange;
+    display: inline-block;
+}
+
+h2 {
+    color: rgb(0, 0, 180);
+    border: 3px solid orange;
+    display: inline-block;
+}
+
+ol {
+    color: #008000;
+    border: 3px solid orange;
+    display: inline-block;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: center;
+}

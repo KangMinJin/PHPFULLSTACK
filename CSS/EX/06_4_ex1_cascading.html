@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 밑으로 갈 수록 우선순위↑ */
+        /* 허나 !important 는 어떤 스타일보다 우선 적용하는 스타일이다. */
+        /* CSS는 위에서 밑으로 계단식, 혹은 폭포수 형식으로 읽어들이기 때문에
+        같은 우선순위라면 밑에 있는 스타일(orange)이 적용이 된다. */
+        /* h1 {
+            color: tomato;
+        }
+
+        h1 {
+            color: orange;
+        } */
+
+        /* 태그 명에 직접 스타일을 주는 타입 스타일 */
+        /* .h1_1 {
+            color: orange;
+        } */
+
+        /* .클래스로 스타일을 주는 클래스 스타일 */
+        /* #h1_id {
+            color: black;
+        } */
+
+        /* #id로 스타일을 주는 id스타일 */
+        /* 태그 안에 style 속성을 사용해 해당 태그만 스타일을 적용 */
+        /* 다 사용은 가능하지만 !important 와 인라인 스타일은 사용을 지양한다. */
+        /* div h1 {
+            color: red;
+        }
+
+        h1 {
+            color: orange;
+        } */
+
+        /* 자식 요소에서 별도로 스타일을 지정하지 않으면
+        부모 요소의 스타일 속성들이 자식 요소로 전달된다.
+        우선 순위 : 부모 요소의 스타일 속성 < 자식 요소의 스타일 속성 
+        !important는 !important를 넣은 해당 요소에만 적용되기 때문에
+        div에는 적용이 되지만 h1에는 적용이 안 된다.
+        부모 자식 {} (부모 안의 자식)이런식이면 이게 우선순위 ↑*/
+    </style>
+    <link rel="stylesheet" href="css/06_4_ex1.css">
+</head>
+
+<body>
+    <!-- <div class="container">
+        <h1 class="h1_1" id="h1_id">적용 순위</h1>
+        태그 안에 style 속성을 사용해 해당 태그만
+            스타일을 적용하는 인라인 스타일
+    </div> -->
+    <!-- 스타일 상속 -->
+    <div class="container_2">
+        <h1 class="h1_2">스타일 상속</h1>
+    </div>
+</body>
+
+</html>
