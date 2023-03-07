@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .art_1 {
+            border: 3px solid #ffa500;
+            display: none;
+        }
+
+        div {
+            border: 3px solid #1fb2aa;
+        }
+
+        span {
+            border: 3px solid #fa8072;
+        }
+
+        .art_2>div,
+        .art_2>span {
+            display: inline-block;
+
+            width: 150px;
+            height: 150px;
+        }
+
+        .wh {
+            width: 150px;
+            height: 150px;
+        }
+
+        /* width, height는 display 가 inline인 요소엔 줄 수 없다. */
+    </style>
+</head>
+
+<body>
+    <article class="art_2">
+        <div>div Tag1</div>
+        <div>div Tag2</div>
+        <div>div Tag3</div>
+        <span>span1</span>
+        <span>span2</span>
+        <span>span3</span>
+    </article>
+    <br>
+    <br>
+    <div class="wh">테스트 div1</div>
+    <span class="wh">테스트 span1</span>
+    <!-- <article class="art_1">
+        <h1>Display None</h1>
+        <div>div Tag1</div>
+        <div>div Tag1</div>
+    </article>
+    <div class="div_2">div Tag2</div>
+    <h1>h1</h1>
+    <p>p</p>
+
+    <span>span</span>
+    <a href="">a</a> -->
+</body>
+
+</html>

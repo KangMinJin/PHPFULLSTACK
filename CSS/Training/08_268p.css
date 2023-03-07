@@ -1,0 +1,45 @@
+.con {
+    border: none;
+    width: 600px;
+    margin: 0 auto;
+}
+
+div {
+    border: 1px dotted #000;
+    padding: 20px;
+    margin: 20px;
+}
+
+.div_1 {
+    border-radius: 20px 20px 0 0;
+}
+
+.div_3 {
+    border-left-style: solid;
+    border-radius: 0 0 20px 20px;
+}
+
+ul {
+    list-style: decimal;
+}
+
+.str {
+    font-weight: 900;
+}
+
+.em {
+    font-style: italic;
+}
+
+table,
+td,
+th {
+    border: 1px solid #999;
+    border-collapse: collapse;
+    padding: 10px 35px;
+    margin: 0 auto;
+}
+
+.color {
+    background-color: #f0f8ff;
+}

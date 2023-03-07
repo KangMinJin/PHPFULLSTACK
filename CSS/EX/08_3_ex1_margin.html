@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .con_1 {
+            border: 3px solid #000;
+            margin: 20px;
+            /* 값을 두 개 넣으면 상하, 좌우 순
+            세 개 넣으면 상, 좌우, 하 순 
+            네 개는 상, 우, 하, 좌 순*/
+        }
+
+        .con_2 {
+            border: 3px solid #000;
+            margin: 30px;
+        }
+
+        /* 마진 중첩 현상 - 세로로 서로 마진 20xp 인
+        con_1과 con_2 사이의 마진이 40px 이 아닌 20px 
+        각 각 20px, 30px 인 con사이의 마진은 30px.
+        마진이 중첩되면 더 큰 마진이 사이의 마진이 된다.
+        마진 중첩 현상은 세로로만 일어나며 가로로는 일어나지 않는다.*/
+    </style>
+</head>
+
+<body>
+    <div class="con_1">
+        <h1>margin</h1>
+        <p>외부 여백을 지정합니다.</p>
+    </div>
+    <div class="con_2">
+        <h1>margin</h1>
+        <p>외부 여백을 지정합니다.</p>
+    </div>
+</body>
+
+</html>

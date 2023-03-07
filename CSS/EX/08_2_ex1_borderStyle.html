@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div_border {
+            border: 1px solid #000000;
+            width: 100px;
+            height: 100px;
+        }
+
+        .div_none {
+            border-style: none;
+            background-color: #e6f5ff;
+            width: 100px;
+            height: 100px;
+        }
+
+        .div_sol {
+            border-style: solid;
+            border-width: 1px;
+            /* top-right-bottom-left 순 */
+            border-top-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .div_dot {
+            border-style: dotted;
+            border-color: #2aa367;
+            width: 100px;
+            height: 100px;
+        }
+
+        .div_dash {
+            border-style: dashed;
+            width: 100px;
+            height: 100px;
+        }
+
+        .div_db {
+            border-style: double;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div_border">
+        테두리(한번에)
+    </div>
+    <br>
+    <div class="div_none">테두리(없음)</div>
+    <br>
+    <div class="div_sol">테두리(실선)</div>
+    <br>
+    <div class="div_dot">테두리(점선)</div>
+    <br>
+    <div class="div_dash">테두리(대쉬)</div>
+    <br>
+    <div class="div_db">테두리(이중선)</div>
+</body>
+
+</html>
