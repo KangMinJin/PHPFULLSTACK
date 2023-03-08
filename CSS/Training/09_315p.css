@@ -1,0 +1,21 @@
+
+body {
+    background: url('./dots-6488171_960_720.jpg');
+    margin: 0;
+}
+
+.con {
+    background-color: #808080;
+    height: 200px;
+    color: #fff;
+    padding: 20px;
+}
+
+.str {
+    font-weight: 900;
+}
+
+p {
+    width: 600px;
+    line-height: 26px
+}

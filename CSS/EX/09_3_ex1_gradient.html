@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div_linear {
+            border: 1px solid #aaaaaa;
+            width: 400px;
+            height: 200px;
+            background: linear-gradient(45deg, #ffffff, #c3efff, #e0d4ff 20%, #ffc6d0, #fff6c3, #ffffff);
+        }
+
+        .div_radial {
+            border: 1px solid #aaaaaa;
+            width: 400px;
+            height: 200px;
+            background: radial-gradient(circle closest-side at 0% 20%, #ffffff, #c3efff, #e0d4ff 20%, #ffc6d0, #fff6c3, #ffffff);
+        }
+            /* at (width)% (height)% 순 */
+        .circle {
+            margin: 20px;
+            border: 3px solid #ffffff;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle farthest-side at 0% 5%, #ffffff 20%, #cff2ff, #e0d4ff, #ffd6dd, #fffadf);
+            box-shadow: 30px 10px 0px rgba(218, 218, 218, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <h2>선형 그러데이션</h2>
+    <div class="div_linear"></div>
+    <h2>원형 그러데이션</h2>
+    <div class="div_radial"></div>
+    <div class="circle"></div>
+</body>
+
+</html>

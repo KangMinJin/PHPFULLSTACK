@@ -1,0 +1,40 @@
+article {
+    position: relative;
+    border: 1px solid #000;
+    width: 930px;
+    height: 1300px;
+}
+
+div {
+    border: 1px solid #aaa;
+}
+
+.div_1,
+.div_2,
+.div_3 {
+    margin: 10px;
+    background-color: #e6e6e6;
+    width: 600px;
+    height: 170px;
+}
+
+.div_2 {
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+
+.div_3 {
+    position: relative;
+    left: 100px;
+    top: -50px;
+}
+
+.div_4 {
+    position: fixed;
+    right: 30px;
+    top: 30px;
+    background-color: #000;
+    width: 100px;
+    height: 100px;
+}

@@ -1,0 +1,45 @@
+body {
+    background-color: #02233b;
+    margin: 0;
+}
+
+.con {
+    background: #fff url("./img/woman-2399668_960_720.png") no-repeat right bottom / 35%;
+    /* 이 아래를 모두 축약형으로 표현하면 이렇게 된다.↑ 순서 상관은 x */
+    /* background-color: #fff;
+    background-image: url("./img/woman-2399668_960_720.png");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 35%; */
+    width: 600px;
+    height: 800px;
+    padding: 20px;
+    margin: auto;
+}
+
+h1 {
+    background-color: #004344;
+    color: #fff;
+    width: 600px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    margin: auto;
+}
+
+.em {
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 900;
+    text-align: center;
+}
+
+h4 {
+    color: #ff6600;
+}
+
+ul {
+    list-style: none;
+    line-height: 30px;
+}
+/* ul이 아니고 p로 쓸 경우엔 들여쓰기는 text-indent 로 주면 된다. */

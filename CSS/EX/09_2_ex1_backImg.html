@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div_img {
+            background-image: url('./img/flowers.jpg'), url('./img/apples-2788599_960_720.jpg');
+            width: 800px;
+            height: 500px;
+        }
+
+        /* 경로에 ''나 ""를 넣어야 파일 이름이나 경로에 띄어쓰기나
+        특수문자가 있을 경우 파일이 안 나오는걸 방지할 수 있다. 
+        font-family 처럼 여러개 설정 가능.*/
+
+        .div_rpt {
+            border: 1px solid #000;
+            /* background-image: url('./img/flowers.jpg'); */
+            width: 1000px;
+            height: 1000px;
+
+        }
+
+        /* body {
+            background-image: url('./img/flowers.jpg');
+        } */
+
+        .div_pos {
+            border: 1px solid #000;
+            width: 800px;
+            height: 800px;
+            background-image: url('./img/flowers.jpg');
+            background-repeat: no-repeat;
+            /* background-position: bottom 100px right 50px; */
+            background-size: cover;
+        }
+
+        .at_img {
+            border: 1px solid #000;
+            background-image: url('./img/flowers.jpg');
+            background-size: 80%;
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            overflow: scroll;
+        }
+
+        .div_img_scroll {
+            background-attachment: scroll;
+        }
+        .div_img_fixed {
+            background-attachment: fixed;
+        }
+        .div_img_local {
+            background-attachment: local;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="div_img"></div> -->
+
+    <!-- <h1>background-repeat</h1>
+    <div class="div_rpt"></div> -->
+    <!-- <h1>background-position</h1>
+    <div class="div_pos"></div> -->
+    <div style="height: 200px;"></div>
+    <div class="div_img_scroll at_img">
+        학교교육 및 평생교육을 포함한 교육제도와 그 운영, 교육재정 및 교원의 지위에 관한 기본적인 사항은 법률로 정한다. 제1항의 해임건의는 국회재적의원 3분의 1 이상의 발의에 의하여 국회재적의원 과반수의
+        찬성이 있어야 한다. 대통령으로 선거될 수 있는 자는 국회의원의 피선거권이 있고 선거일 현재 40세에 달하여야 한다.
+    </div>
+    <!-- class 여러개 써서 CSS도 여러 개 줄 수 있다. -->
+    <div class="div_img_fixed at_img">
+        국회는 국무총리 또는 국무위원의 해임을 대통령에게 건의할 수 있다. 대통령이 제1항의 기간내에 공포나 재의의 요구를 하지 아니한 때에도 그 법률안은 법률로서 확정된다. 훈장등의 영전은 이를 받은
+        자에게만 효력이 있고, 어떠한 특권도 이에 따르지 아니한다. 국가는 균형있는 국민경제의 성장 및 안정과 적정한 소득의 분배를 유지하고, 시장의 지배와 경제력의 남용을 방지하며, 경제주체간의 조화를 통한
+        경제의 민주화를 위하여 경제에 관한 규제와 조정을 할 수 있다.
+    </div>
+    <div class="div_img_local at_img">
+        국회는 국정을 감사하거나 특정한 국정사안에 대하여 조사할 수 있으며, 이에 필요한 서류의 제출 또는 증인의 출석과 증언이나 의견의 진술을 요구할 수 있다. 헌법재판소 재판관의 임기는 6년으로 하며,
+        법률이 정하는 바에 의하여 연임할 수 있다. 대법원장과 대법관이 아닌 법관은 대법관회의의 동의를 얻어 대법원장이 임명한다.
+    </div>
+</body>
+
+</html>

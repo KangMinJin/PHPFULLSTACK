@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position</title>
+    <style>
+        main,
+        section,
+        article {
+            padding: 20px;
+        }
+
+        section,
+        article,
+        div {
+            border: 1px solid #000;
+        }
+
+        main {
+            background-color: #fff7cb;
+            /* height: 1000px; */
+        }
+
+        section {
+            background-color: #88c4c1;
+            /* position: relative; */
+        }
+
+        article {
+            background-color: #b4e2ff;
+            height: 1000px;
+        }
+
+        .div_st {
+            background-color: #b5ffb5;
+        }
+
+        .div_rel {
+            background-color: #ffc4ad;
+            /* position: relative;
+            left: -30px; */
+        }
+
+        /* relative는 원래 자기 위치에서부터 움직인다.
+        음수 (-)도 사용 가능. 원래 위치에서 left 기준 -30px 이동. */
+
+        .div_ab {
+            background-color: #9da3ff;
+            /* position: absolute;
+            top: 30px; */
+        }
+
+        /* absolute는 position이 relative인 상위 요소를 기준으로 움직인다.
+        어느곳에도 relative 주지 않으면 body 기준으로 움직인다.
+        section에 relative를 줬기 때문에 section 기준 top 30px 이동 */
+
+        .div_fix {
+            background-color: #c2ffff;
+            /* position: fixed;
+            bottom: 30px;
+            right: 5%; */
+        }
+
+        /* fixed는 Viewport(브라우저 창)을 기준으로 움직인다.
+        Viewport 기준 bottom 30px right 5% 이동 */
+
+        .div_stick {
+            background-color: #ffb5d1;
+            position: sticky;
+            top: 0px;
+        }
+
+        /* sticky는 스크롤할때 고정이 되게 한다. 부모 요소 안에서만 적용된다.
+        article에는 적용되지만 main에선 스크롤해도 적용 x*/
+    </style>
+</head>
+
+<body>
+    <main>
+        main
+        <section>
+            section
+            <article>
+                article
+                <div class="div_st">static</div>
+                <div class="div_rel">relative</div>
+                <div class="div_ab">absolute</div>
+                <div class="div_fix">fixed</div>
+                <div class="div_stick">sticky</div>
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>

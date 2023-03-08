@@ -1,0 +1,30 @@
+header, main, footer {
+    width: 800px;
+    margin: 10px auto;
+}
+
+article {
+    border: 1px dashed #ccc;
+    width: 350px;
+    height: 200px;
+    margin: 10px;
+    padding: 10px;
+    float: left;
+}
+
+article p {
+    font-size: 12px;
+}
+
+footer {
+    clear: both;
+    background-color: #000;
+    color: #fff;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    margin: auto;
+}
+
+/* float요소의 상위 요소에 넓이를 주면 float 한꺼번에 줘도 배치 잘 된다.
+하나씩 줄 필요 x */
