@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset {
+    background-image: url(./img/want_you.jpg);
+    background-size: cover;
+    width: 500px;
+    margin: auto;
+}
+
+.title {
+    font-size: 2em;
+    font-weight: 900;
+    color: crimson;
+}
+
+label {
+    font-weight: 900;
+}
+
+.txt {
+    background: none;
+}
+
+.txt:focus {
+    outline: none;
+    border: 3px solid crimson;
+}
+
+.gen:checked+label {
+    color: crimson;
+}
+
+.lb {
+    float: left;
+    margin-right: 10px;
+}
+
+
+span {
+    background-color: #000;
+    color: #fff;
+    display: none;
+}
+
+
+.rd::before {
+    content: '*';
+    color: crimson;
+}
+
+.sub:hover+span {
+    display: inline;
+}

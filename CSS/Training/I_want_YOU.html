@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I WANT YOU!</title>
+    <link rel="stylesheet" href="./I_want_YOU.css">
+</head>
+
+<body>
+        <fieldset>
+            <legend class="title">I want YOU!</legend>
+            <form action="">
+                <label for="name" class="rd">이름</label>
+                <input type="text" id="name" class="txt" required>
+                <br><br>
+
+                <label for="age" class="rd">나이</label>
+                <input type="number" id="age" class="txt" required min="20">
+                <br><br>
+
+                <label for="" class="rd">성별</label required>
+                <input type="radio" name="gen" id="male" class="gen" required>
+                <label for="male">남자</label>
+                <input type="radio" name="gen" id="female" class="gen">
+                <label for="female">여자</label>
+                <br><br>
+                
+                <label for="req" class="lb">요청사항</label>
+                <textarea name="req" id="req" cols="30" rows="10" class="txt" placeholder="요청 사항 입력"></textarea>
+                <br><br>
+                
+                <input type="submit" value="보내기" class="sub">
+                <span>내용을 다시 한 번 확인해 주세요.</span>
+            </form>
+        </fieldset>
+</body>
+
+</html>

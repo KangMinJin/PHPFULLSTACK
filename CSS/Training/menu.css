@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+nav {
+    width: 100%;
+    height: 40px;
+    background-color: aquamarine;
+}
+
+ul {
+    list-style: none;
+    width: 90%;
+    height: 40px;
+    padding: 0;
+    margin: auto;
+}
+li {
+    border: 1px solid #ccc;
+    height: 40px;
+    float: left;
+    width: 15%;
+    text-align: center;
+    line-height: 40px;
+    margin: auto;
+}
