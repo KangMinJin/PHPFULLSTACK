@@ -1,0 +1,9 @@
+@media (min-width: 801px) {
+    h1 {
+        color: rgb(238, 104, 220);
+    }
+    p {
+        background-color: lightgreen;
+        color: rgb(62, 162, 255);
+    }
+}

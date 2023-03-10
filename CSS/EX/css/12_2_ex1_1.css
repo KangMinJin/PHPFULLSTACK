@@ -1,0 +1,10 @@
+@media (max-width: 600px) {
+    h1 {
+        color: rgb(101, 207, 101);
+    }
+
+    p {
+        background-color: tomato;
+        color: rgb(255, 225, 149);
+    }
+}

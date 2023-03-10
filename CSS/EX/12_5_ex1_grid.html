@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .grid_con {
+            /* width: 50vw;
+            height: 50vw; */
+            background-color: rgb(255, 248, 227);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            /* grid-template-rows: minmax(100px, 200px) minmax(100px, 200px); */
+            /* minmax()는 최소치와 최대치를 정해주는 함수. */
+            /* auto-fit은 최대로 늘렸을 때 빈 공간이 남지 않는다. */
+            /* grid-gap: 10px 20px; */
+            /* grid-gap은 그리드 간의 간격을 지정한다. */
+        }
+        .grid_con_2 {
+            background-color: rgb(255, 248, 227);
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            /* auto-fill은 최대로 늘렸을 때 빈 공간이 남는다. */
+        }
+        .grid_item {
+            background-color: rgb(169, 254, 255);
+        }
+        .grid_item:nth-child(odd) {
+            background-color: rgb(255, 218, 227);
+        }
+        .grid_item_1 {
+            /* grid-column-start: 1;
+            grid-column-end: 4; */
+            grid-column: 1/4;
+            /* 위의 축약형. */
+        }
+        .grid_item_4 {
+            /* grid-row-start: 2;
+            grid-row-end: 3; */
+            grid-row: 2/3;
+            /* 위의 축약형. */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="grid_con">
+        <div class="grid_item_1">1</div>
+        <div class="grid_item">2</div>
+        <div class="grid_item">3</div>
+        <div class="grid_item_4">4</div>
+        <div class="grid_item">5</div>
+        <div class="grid_item">6</div>
+    </div>
+    <br><br>
+    <div class="grid_con_2">
+        <div class="grid_item">1</div>
+        <div class="grid_item">2</div>
+        <div class="grid_item">3</div>
+        <div class="grid_item">4</div>
+        <div class="grid_item">5</div>
+        <div class="grid_item">6</div>
+    </div>
+</body>
+
+</html>
