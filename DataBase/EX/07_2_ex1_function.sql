@@ -27,7 +27,7 @@ SELECT NULLIF(1, 1)
 -- 				WHEN 분기수식3 THEN 결과3
 -- 				ELSE 결과4
 -- 			END
--- if , elif 와 비슷~
+-- if , elif 와 비슷하나 CASE는 우선순위가 없다!
 
 SELECT
 	emp_no
@@ -108,7 +108,7 @@ SELECT SUBSTRING_INDEX('ab.cd.ef.gh', '.', 4);
 -- 	CEILING(숫자) : 올림합니다.
 SELECT CEILING(1.1);
 
--- 	FLOOR(숫자) : 내림합니다.
+-- 	FLOOR(숫자) : 소수점 버린다.
 SELECT FLOOR(1.9);
 
 -- 	ROUND(숫자) : 반올림합니다.
@@ -116,7 +116,7 @@ SELECT ROUND(1.4);
 SELECT ROUND(1.5);
 
 -- 	TRUNCATE(숫자, 정수) : 소수점 기준으로 정수위치 까지 구하고 나머지는 버립니다.
-SELECT TRUNCATE(1.11, 1);
+SELECT TRUNCATE(1.11, 0);
 
 -- 5. 날짜 및 시간 함수
 -- 	NOW() : 현재 날짜/시간을 구합니다. (YYYY-MM-DD HH:MM:DD)

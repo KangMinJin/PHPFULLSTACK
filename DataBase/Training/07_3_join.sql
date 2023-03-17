@@ -45,13 +45,44 @@ LIMIT 10;
 
 -- 6. 각 부서의 부서장의 부서명, 물네임, 입사일을 출력하시오.
 
-SELECT dpt.dept_name, CONCAT(emp.last_name, ' ', emp.first_name) fullname, emp.hire_date
+SELECT 
+	dpt.dept_name
+	,CONCAT(emp.last_name, ' ', emp.first_name) fullname
+	,emp.hire_date
 FROM employees emp
 	INNER JOIN dept_manager dpm
 		ON emp.emp_no = dpm.emp_no
 	INNER JOIN departments dpt
 		ON dpm.dept_no = dpt.dept_no
 WHERE dpm.to_date >= NOW();
+
+
+SELECT
+	D.dept_no
+	,D.dept_name
+	,CONCAT(E.last_name, ' ', E.last_name) fullname
+	,E.hire_date
+FROM employees E
+	LEFT OUTER JOIN dept_manager M
+ 		ON E.emp_no = M.emp_no
+	RIGHT OUTER JOIN departments D
+		ON M.dept_no = D.dept_no
+WHERE M.to_date >= NOW();
+		
+SELECT
+	D.dept_no
+	,D.dept_name
+	-- ,CONCAT(E.last_name, ' ', E.last_name) fullname
+-- 	,E.hire_date
+FROM departments D
+	LEFT OUTER JOIN dept_manager M
+ 		ON D.dept_no = M.dept_no;
+-- 	RIGHT OUTER JOIN employees E
+-- 		ON E.emp_no = M.emp_no
+-- WHERE M.to_date >= NOW();		
+
+	
+
 
 
 -- 7. 현재 직책이 'Staff'인 사원의 현재 평균 월급을 출력하시오.
@@ -62,31 +93,61 @@ FROM salaries sal
 		ON sal.emp_no = titl.emp_no
 WHERE titl.title = 'Staff' AND titl.to_date >= NOW() AND sal.to_date >= NOW();
 
+SELECT T.title, AVG(S.salary) 평균월급
+FROM salaries S
+	INNER JOIN titles T
+		ON S.emp_no = T.emp_no
+WHERE T.title = 'Staff' AND T.to_date >= NOW() AND S.to_date >= NOW();
+
+
 -- 8. 부서장직을 역임했던 모든 사원의 풀네임과 입사일, 사번, 부서번호 출력하시오.
 
-SELECT CONCAT(emp.last_name, ' ', emp.first_name), emp.hire_date, emp.emp_no, dpm.dept_no
+SELECT CONCAT(emp.last_name, ' ', emp.first_name) fullname , emp.hire_date, emp.emp_no, dpm.dept_no
 FROM employees emp
 	INNER JOIN dept_manager dpm
-		ON emp.emp_no = dpm.emp_no;
+		ON emp.emp_no = dpm.emp_no
+WHERE dpm.to_date != DATE(99990101);
+		
+SELECT
+	CONCAT(E.last_name, ' ', E.first_name) fullname
+	,E.hire_date
+	,E.emp_no
+	,M.dept_no
+FROM dept_manager M
+	INNER JOIN employees E
+		ON M.emp_no = E.emp_no;
 
 -- 9. 현재 각 직급별 평균월급 중 60,000이상인 직급의 직급명, 평균월급(정수) 를 내림차순으로 출력하시오.
 
-SELECT titl.title, TRUNCATE(AVG(sal.salary), 0) AS avsal
+-- TRUNCATE는 숫자 형식 그대로.
+SELECT titl.title, FLOOR(AVG(sal.salary)) avsal
+FROM salaries sal
+	INNER JOIN titles titl
+		ON sal.emp_no = titl.emp_no
+WHERE	sal.to_date >= NOW()
+		AND titl.to_date >= NOW()
+GROUP BY titl.title
+HAVING avsal >= 60000
+ORDER BY avsal DESC;
+
+-- FORMAT은 숫자가 문자열로 변환.
+SELECT titl.title, FLOOR(AVG(sal.salary))
 FROM salaries sal
 	INNER JOIN titles titl
 		ON sal.emp_no = titl.emp_no
 WHERE sal.to_date >= NOW() AND titl.to_date >= NOW()
 GROUP BY titl.title
-HAVING avsal >= 60000
-ORDER BY avsal DESC;
+HAVING AVG(sal.salary) >= 60000
+ORDER BY AVG(sal.salary) DESC;
 
 -- 10. 성별이 여자인 사원들의 직급별 사원수를 출력하시오.
 
-SELECT titl.title, emp.gender, COUNT(titl.title)
+SELECT titl.title, COUNT(*)
 FROM employees emp
 	INNER JOIN titles titl
 		ON emp.emp_no = titl.emp_no
 WHERE emp.gender = 'F'
+	AND titl.to_date >= NOW()
 GROUP BY titl.title;
 
 -- 11. 직급별 퇴사한 여자사원수?
@@ -208,7 +269,7 @@ ON A.emp_no = B.emp_no
 GROUP BY A.gender
 
 
-SELECT C.title, COUNT(C.title)
+SELECT A.gender, COUNT(A.gender)
 FROM employees A
 INNER JOIN (
 	SELECT DISTINCT emp_no
@@ -219,9 +280,12 @@ INNER JOIN (
 ON A.emp_no = B.emp_no
 INNER JOIN titles C
 ON B.emp_no = C.emp_no
-GROUP BY C.title;
+GROUP BY A.gender;
 
-
+SELECT title, COUNT(title)
+FROM (
+WHERE
+GROUP BY 
 
 
 
