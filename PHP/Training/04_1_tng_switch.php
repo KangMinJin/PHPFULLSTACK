@@ -12,32 +12,35 @@ $score = 80;
 $t1 = '당신의 점수는 ';
 $t2 = '점 입니다. ';
 $warn = '잘못된 값을 입력 했습니다.';
-switch ($score) {
-    case $score <=100 && $score >=0:
-        switch ($score) {
-            case 100:
-                $grade = '<A+>';
-                break;
-            case $score >= 90:
-                $grade = '<A>';
-                break;
-            case $score >= 80:
-                $grade = '<B>';
-                break;
-            case $score >= 70:
-                $grade = '<C>';
-                break;
-            case $score >= 60:
-                $grade = '<D>';
-                break;
-        default:
-                $grade = '<F>';
-                break;
-        }
-        echo $t1.$score.$t2.$grade;
-        break;
-default:
+// if($score < 0 || $score > 100 )
+// $score <=100 && $score >=0 이 부분을 이렇게 쓰면 더 좋을듯...
+if($score < 0 || $score > 100 )
+{
     echo $warn;
-    break;
 }
+else
+{
+    switch ($score) {
+        case 100:
+            $grade = '<A+>';
+            break;
+        case $score >= 90:
+            $grade = '<A>';
+            break;
+        case $score >= 80:
+            $grade = '<B>';
+            break;
+        case $score >= 70:
+            $grade = '<C>';
+            break;
+        case $score >= 60:
+            $grade = '<D>';
+            break;
+    default:
+            $grade = '<F>';
+            break;
+    }
+    echo $t1.$score.$t2.$grade;
+}
+
 ?>
