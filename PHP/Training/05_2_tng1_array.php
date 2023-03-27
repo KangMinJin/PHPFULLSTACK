@@ -30,6 +30,28 @@
                     ,"김밥" => "밥"
                     ,"제육볶음" => "돼지고기"
                 );
-    unset($cook_del["우동"]);
-    var_dump($cook_del);
+    // unset($cook_del["우동"]);
+    // var_dump($cook_del);
+
+    // foreach문을 이용해서 키가 "삭제"인 요소를 제거하시오.
+    // if문 사용, unset("삭제") 사용X. 키가 "삭제" 이외는 "키 : 값" 포맷으로 출력.
+    $cook_total = array(
+        "된장찌개" => "파"
+        ,"볶음밥" => "양파"
+        ,"삭제" => "값값"
+        ,"김치" => "마늘"
+        ,"비빔밥" => "참기름"
+    );
+    foreach($cook_total as $key => $val)
+    {
+        if($key != "삭제")
+        {
+            echo $key." : ".$val."\n";
+        }
+        else
+        {
+            unset($cook_total[$key]);
+        }
+    }
+    var_dump($cook_total);
 ?>
