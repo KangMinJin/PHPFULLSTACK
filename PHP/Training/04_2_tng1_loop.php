@@ -32,5 +32,16 @@ for ($star=$num; $star >= 0; $star--) {
     }
     echo "\n";
 }
+// 옆으로 거꾸로
+$num = 6;
+for ($s=0; $s < $num; $s++) { 
+    for ($j=$num-1; $s < $j; $j--) {
+        echo " ";
+    }
+    for ($i=0; $s >= $i; $i++) { 
+        echo "*";
+    }
+    echo "\n";
+}
 
 ?>
