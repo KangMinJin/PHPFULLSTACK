@@ -35,6 +35,27 @@
 
     // foreach문을 이용해서 키가 "삭제"인 요소를 제거하시오.
     // if문 사용, unset("삭제") 사용X. 키가 "삭제" 이외는 "키 : 값" 포맷으로 출력.
+    // $cook_total = array(
+    //     "된장찌개" => "파"
+    //     ,"볶음밥" => "양파"
+    //     ,"삭제" => "값값"
+    //     ,"김치" => "마늘"
+    //     ,"비빔밥" => "참기름"
+    // );
+    // foreach($cook_total as $key => $val)
+    // {
+    //     if($key != "삭제") // !=는 리소스 많이 사용하는듯?
+    //     {
+    //         echo $key." : ".$val."\n";
+    //     }
+    //     else
+    //     {
+    //         unset($cook_total[$key]);
+    //     }
+    // }
+    // var_dump($cook_total);
+
+    // 앞에거 반대로. != 보다 이게(===) 더 효율이 좋은듯?
     $cook_total = array(
         "된장찌개" => "파"
         ,"볶음밥" => "양파"
@@ -44,13 +65,13 @@
     );
     foreach($cook_total as $key => $val)
     {
-        if($key != "삭제")
+        if($key === "삭제")
         {
-            echo $key." : ".$val."\n";
+            unset($cook_total[$key]);
         }
         else
         {
-            unset($cook_total[$key]);
+            echo $key." : ".$val."\n";
         }
     }
     var_dump($cook_total);

@@ -117,6 +117,7 @@ krsort($arr_krsort);
 
 // foreach($array as $key => $val){} $array 의 내용 중 키를 $key에 원소를 $val에 저장 반복 수행.
 // foreach($array as $val){} $array 의 내용 중 원소를 $val에 저장 반복 수행.
+// ***foreach문은 중요하다!***
     $arr1 = array(
                         "key1" => "val1"
                         ,"key3" => "val3"
