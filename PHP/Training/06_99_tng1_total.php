@@ -39,7 +39,7 @@ function my_len(&$arr)
     // star(5);// 함수 안에 echo 들어가있으니 echo를 앞에 붙일 필요가 없다.
     function star_rect($star)
     {   
-        for($j=0; $j < $star; $j++)
+        for($i=0; $i < $star; $i++)
         {
             star($star);
         }
@@ -47,19 +47,20 @@ function my_len(&$arr)
 
     function star_tri($star)
     {
-        for($star; $star > 0; $star--)
+        for($i=1; $i <= $star; $i++)
         {
-            star($star);
+            star($i); //star()안에 $star_tri가 받는 변수인 $star뿐만 아니라 for문의 매개변수(parameter)인 $i도 넣을 수 있다.
         }
     }
 
-    // function star($star)
-    // {   
-    //     for ($i=0; $i < $star; $i++) 
-    //     { 
-    //         echo "*";
-    //     }
-    //     echo"\n";
-    // }
+    function star_tri_rev($star)
+    {
+        for($i=$star; $i > 0 ; $i--)
+        {
+            star($i);
+        }
+    }
+
     star_tri(5);
+    star_tri_rev(5);
 ?>
