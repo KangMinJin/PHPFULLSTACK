@@ -43,6 +43,29 @@
     // $obj_Student->stud_age = "15"; //접근 불가
 
     // 위와 같기 때문에 getter, setter로 private객체에 접근
-    echo $obj_Student->set_stud_id("갑순이id"); // setter
-    echo $obj_Student->get_stud_id(); //getter
+    // $obj_Student->set_stud_id("갑순이id"); // setter
+    // echo $obj_Student->get_stud_id(); //getter
+
+    // 생성자 construct()
+    class Food
+    {
+        private $food_name;
+
+        // 여기서부터 생성자
+        public function __construct($param_food_name) // v 7.4부터 __construct()써야 함
+        {
+            $this->food_name = $param_food_name;
+        }
+        public function print_food_name()
+        {
+            echo $this->food_name;
+        }
+    }
+    $obj_food = new Food("탕수육");
+    $obj_food->print_food_name();
+
+
+
+
+
 ?>
