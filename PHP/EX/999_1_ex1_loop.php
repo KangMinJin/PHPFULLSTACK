@@ -1,4 +1,12 @@
 <?php
+
+    /**************************
+    파일명 : 
+    시스템명 :
+    이력
+        v001 : new - 1(사번)
+        v002 : fnc_print_str 수정 - 1(사번)
+    ***************************/
     // 1. while + if 조합
     // $i = 0;
     // while( $i <= 4 )
@@ -190,7 +198,7 @@
     // }
     // echo gugudan(2);
 
-    function make_tri( $num )
+    function make_star_tri( $num )
     {
         for ($i=0; $i < $num ; $i++) { 
             
@@ -200,19 +208,172 @@
             echo "\n";
         }
     }
-    // make_tri(5);
+    // make_star_tri(5);
 
-    function star_line( $num )
-    {
-        for ($i=0; $i < $num ; $i++) { 
-            echo "*";
+    //--------------------
+    // 함수명   : fnc_print_str
+    // 기능     : 사용자가 원하는 문자로 원하는 횟수만큼 출력하는 함수
+    // 파라미터 : INT $param_num (사용자가 원하는 횟수)
+    //           STR $param_str (사용자가 원하는 문자)
+    //--------------------
+
+    // function fnc_print_tri( $param_num ) // v002 del
+    function fnc_print_str( $param_num, $param_str = "%") // v002 add
+    {                                               // 파라미터가 안 넘어왔을 때 셋팅해주는 값. 첫번째값은 무조건 받아야함..(순서 달라지면 에러터짐)
+        for ($i=0; $i < $param_num ; $i++) { 
+            // echo "*"; // v002 del
+            echo $param_str; // v002 add
         }
         echo "\n";
     }
 
-    star_line(1);
-    star_line(2);
-    star_line(3);
-    star_line(4);
-    star_line(5);
+    // fnc_print_str(6, "*");
+
+    // star_line(1);
+    // star_line(2);
+    // star_line(3);
+    // star_line(4);
+    // star_line(5);
+//     function make_tri( $param_str, $param_num )
+//     {
+//         for ($i=0; $i < $param_num; $i++) { 
+//             echo $param_str;
+//         }
+//         echo "\n";
+//     }
+//     make_tri("ㄱ", 5);
+
+    // reference 참조
+    function fnc_reference2 ( &$param_str )
+    {
+        echo "2번 : ".$param_str."\n";
+        $param_str = "fnc_reference2에서 값 변경";
+        echo "3번 : ".$param_str."\n";
+    }
+    $str = "aaa";
+    // echo "1번 : ".$str."\n";
+    // fnc_reference2( $str );
+    // echo "4번 : ".$str."\n";
+
+
+    // function fnc_str_modify( &$param_str, $param_modify )
+    // {
+    //     $param_str = $param_modify;
+    //     return $param_str;
+    // }
+    // $str = "안녕하세요\n";
+    // echo $str;
+    // $str_m = "졸려요";
+    // fnc_str_modify( $str, $str_m );
+    // echo $str;
+
+    // 출력 예상
+    // 1번 : aaa
+    // 2번 : aaa
+    // 3번 : fnc_reference2에서 값 변경
+    // 4번 : fnc_reference2에서 값 변경
+
+    // ------------- Class -------------
+    class Food
+    {
+        // 접근 제어 지시자
+        // public    : 어디서든(class 밖에서도) 접근 가능 
+        // private   : 해당 class 내에서만 접근 가능
+        // protected : 해당 class와 상속 class 내에서만 접근 가능
+
+        // 멤버 변수
+        protected $str_name; // 멤버변수는 보통 private
+        protected $int_price;
+
+        // 메소드
+        public function __construct( $param_name, $param_price ) // 생성자 - 초기값 셋팅할때 사용?
+        {
+            $this->str_name = $param_name; // $this 포인터는 이 클래스 내의 요소를 선택할 수 있게 한다!
+            $this->int_price = $param_price;
+        }
+
+        public function fnc_print_food() // getter
+        {
+            $str = $this->str_name." : ".$this->int_price."원\n";
+            echo $str;
+        }
+
+        public function fnc_set_price( $param_price ) // setter
+        {
+            $this->int_price = $param_price;
+        }
+    }
+
+    // $obj_food = new Food( "탕수육", 10000 );
+    // $obj_food->fnc_print_food(); // getter 이용해서 출력
+    // Food Class의 멤버변수 $int_price의 값을 12000으로 바꾸어주세요
+    // $obj_food->fnc_set_price( 12000 ); // 값을 12000원으로 셋팅
+    // $obj_food->fnc_print_food();
+
+    // 상속 : 부모 클래스의 객체들을 자식 클래스가 상속받아 사용할 수 있다.
+    class KoreanFood extends Food // Food Class를 상속받은 KoreanFood Class
+    {
+        protected $side_dish;
+
+        public function __construct( $param_name, $param_price, $param_side_dish )
+        {
+            $this->str_name = $param_name;
+            $this->int_price = $param_price;
+            $this->side_dish = $param_side_dish;
+        }
+
+        // 오버라이딩 : 부모 클래스에서 정의된 메소드를 자식 클래스에서 재정의
+        public function fnc_print_food()
+        {
+            // $str = $this->str_name." : ".$this->int_price."원\n반찬 : ".$this->side_dish."\n";
+            parent::fnc_print_food(); // 위처럼 모두 다 쓰지 말고 parent::함수();를 해서 실행하고
+            $str = "반찬 : ".$this->side_dish."\n"; // 그 뒤에 붙을 문장 출력
+            echo $str;
+        }
+    }
+    // $obj_korean_food = new KoreanFood( "치킨", 20000, "치킨무" );
+    // $obj_korean_food->fnc_print_food(); // 부모 클래스의 메소드를 갖다쓸 수 있다 - 이것이 상속
+
+    class People
+    {
+        protected $name;
+
+        public function set_name( $param_name )
+        {
+            $this->name = $param_name;
+        }
+        public function people_print()
+        {
+            echo "이름 : ".$this->name."\n";
+        }
+    }
+    // $obj_pp = new People;
+    // $obj_pp->set_name("냠냐미");
+    // $obj_pp->people_print();
+
+    class Student extends People
+    {
+        private $id;
+
+        // public function __construct( $param_name, $param_id )
+        // {
+        //     $this->name = $param_name;
+        //     $this->id = $param_id;
+        // }
+        public function set_id( $param_id )
+        {
+            $this->id = $param_id;
+        }
+        public function student_print()
+        {
+            // $str = "학생 ID : ".$this->id." 이름 : ".$this->name;
+            echo "학생 ID : ".$this->id."  ";
+            parent::people_print();
+        }
+    }
+
+    $obj_st = new Student;
+    $obj_st->set_name("냠냠쓰");
+    $obj_st->set_id(123456);
+    $obj_st->student_print();
 ?>
