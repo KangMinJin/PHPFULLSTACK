@@ -1,219 +1,196 @@
 <?php
-//블랙잭 게임
-//-카드 숫자를 합쳐 가능한 21에 가깝게 만들면 이기는 게임
-
-//1. 게임 시작시 유저와 딜러는 카드를 2개 받는다.
-// 1-1. 이때 유저 또는 딜러의 카드 합이 21이면 결과 출력
-//2. 카드 합이 21을 초과하면 패배
-// 2-1. 유저 또는 딜러의 카드의 합이 21이 넘으면 결과 바로 출력
-//4. 카드의 계산은 아래의 규칙을 따른다.
-// 4-1.카드 2~9는 그 숫자대로 점수
-// 4-2. K·Q·J,10은 10점
-// 4-3. A는 1점 또는 11점 둘 중의 하나로 계산
-//5. 카드의 합이 같으면 다음의 규칙에 따름
-// 5-1. 카드수가 적은 쪽이 승리
-// 5-2. 카드수가 같을경우 비긴다.
-//6. 유저가 카드를 받을 때 딜러는 아래의 규칙을 따른다.
-// 6-1. 딜러는 카드의 합이 17보다 낮을 경우 카드를 더 받음
-// 6-2. 17 이상일 경우는 받지 않는다.
-//7. 1입력 : 카드 더받기, 2입력 : 카드비교, 0입력 : 게임종료
-//8. 한번 사용한 카드는 다시 쓸 수 없다.
-
-class BlackJack
-{
-    private $arr_num;
-    private $arr_embl;
-    private $arr_deck;
-    private $arr_u_card;
-    private $arr_d_card;
-    private $cnt;
-    private $u_key;
-    private $d_key;
-    private $u_sum;
-    private $d_sum;
-
-    public function __construct()
+    class BlackJack
     {
-        $this->arr_num = array("A","2","3","4","5","6","7","8","9","10","J","Q","K");
-        $this->arr_embl = array( "♠", "♣", "◆", "♥" );
-        
-        foreach ($this->arr_embl as $emblem => $value) {
-            foreach ($this->arr_num as $key => $num) {
-                $this->arr_deck[] = array( "number" => $num, "emblem" => $value);
-            }
-        }
-        $this->cnt = count( $this->arr_deck )-1;
-        shuffle( $this->arr_deck );
-    }
+        private $arr_num;
+        private $arr_embl;
+        private $arr_deck=[];
+        private $cnt;
+        private $u_card;
+        private $d_card;
+        private $u_sum;
+        private $d_sum;
 
-    
-    public function give_u_card()
-    {
-        $this->arr_u_card[] = $this->arr_deck[$this->cnt];
-        $this->cnt--;
-    }
-    public function give_d_card()
-    {
-        $this->arr_d_card[] = $this->arr_deck[$this->cnt];
-        $this->cnt--;
-    }
-    // public function sum( $param_arr )
-    // {
-    //     foreach ($param_arr as $key => $value) {
-    //         switch ($param_arr) {
-    //             case in_array( "K", $param_arr ):
-    //                 $param_arr[array_search( "K", $param_arr )] = 10;
-    //                 break;
-    //             case in_array( "Q", $param_arr ):
-    //                 $param_arr[array_search( "Q", $param_arr )] = 10;
-    //                 break;
-    //             case in_array( "J", $param_arr ):
-    //                 $param_arr[array_search( "J", $param_arr )] = 10;
-    //                 break;
-    //             case in_array( "A", $param_arr ):
-    //                 if( array_sum($param_arr) === 10 )
-    //                     {
-    //                         $param_arr[array_search( "A", $param_arr )] = 11;
-    //                     }
-    //                     else
-    //                     {
-    //                         $param_arr[array_search( "A", $param_arr )] = 1;
-    //                     }
-    //                 break;
-    //                 default:
-    //                     break;
-    //                 }
-    //             }
-    //     }
-    // public function u_sum()
-    // {
-    //     $this->u_key = array_column( $this->arr_u_card, "number" );
-    //     $this->sum( $this->u_key );
-    //     $this->u_sum = array_sum($this->u_key);
-        
-    // }
-    // public function d_sum()
-    // {
-    //     $this->d_key = array_column( $this->arr_d_card, "number" );
-    //     $this->sum( $this->d_key );
-    //     $this->d_sum = array_sum($this->d_key);
-    // }
-    public function u_card_sum()
-    {
-        $this->u_key = array_column( $this->arr_u_card, "number" );
-        
-    foreach ($this->u_key as $key => $value) {
-        switch ($this->u_key) {
-            case in_array( "K", $this->u_key ):
-                $this->u_key[array_search( "K", $this->u_key )] = 10;
-                break;
-            case in_array( "Q", $this->u_key ):
-                $this->u_key[array_search( "Q", $this->u_key )] = 10;
-                break;
-            case in_array( "J", $this->u_key ):
-                $this->u_key[array_search( "J", $this->u_key )] = 10;
-                break;
-            case in_array( "A", $this->u_key ):
-                if( array_sum($this->u_key) === 10 )
-                    {
-                        $this->u_key[array_search( "A", $this->u_key )] = 11;
-                    }
-                    else
-                    {
-                        $this->u_key[array_search( "A", $this->u_key )] = 1;
-                    }
-                break;
-                default:
-                    break;
+        public function __construct()
+        {
+            $this->arr_num = array("A",2,3,4,5,6,7,8,9,10,"J","Q","K");
+            $this->arr_embl = array( "♠", "♣", "◆", "♥" );
+            $this->cnt = (count($this->arr_num) * count($this->arr_embl)) -1;
+            foreach ($this->arr_embl as $emblem => $value) {
+                foreach ($this->arr_num as $key => $num) {
+                    array_push( $this->arr_deck, "$value$num");
                 }
             }
-            $this->u_sum = array_sum($this->u_key);
+            shuffle($this->arr_deck);
         }
 
-    
+        public function give_u_card()
+        {
+            $this->u_card[] = $this->arr_deck[ $this->cnt ];
+            $this->cnt--;
+        }
+        public function give_d_card()
+        {
+            $this->d_card[] = $this->arr_deck[ $this->cnt ];
+            $this->cnt--;
+        }
 
-    public function d_card_sum()
-    {
-        $this->d_key = array_column( $this->arr_d_card, "number" );
-
-        foreach ($this->d_key as $key => $value) {
-            switch ($this->d_key) {
-                case in_array( "K", $this->d_key ):
-                    $this->d_key[array_search( "K", $this->d_key )] = 10;
-                    break;
-                case in_array( "Q", $this->d_key ):
-                    $this->d_key[array_search( "Q", $this->d_key )] = 10;
-                    break;
-                case in_array( "J", $this->d_key ):
-                    $this->d_key[array_search( "J", $this->d_key )] = 10;
-                    break;
-                case in_array( "A", $this->d_key ):
-                    if( array_sum($this->d_key) <= 10 )
+        public function u_sum()
+        {
+            foreach ($this->u_card as $key => $value)
+            {
+                if( $value === "K" || $value === "Q" || $value === "J")
+                {
+                    $this->u_card[ $key ] = 10;
+                }
+                else if( $value === "A" )
+                {
+                    if( array_sum( $this->u_card ) > 10 )
                     {
-                        $this->d_key[array_search( "A", $this->d_key )] = 11;
+                        $this->u_card[ $key ] = 1;
                     }
                     else
                     {
-                        $this->d_key[array_search( "A", $this->d_key )] = 1;
+                        $this->u_card[ $key ] = 11;
                     }
-                    break;
-                default:
-                    break;}
+                }
+            }
+            // foreach ($this->u_card as $key => $value)
+            // {
+            //     $this->u_card[] = mb_substr( $this->u_card[$key], 1);
+            //     if( $this->u_sum[ $key ] === "K" || $this->u_sum[ $key ] === "Q" || $this->u_sum[ $key ] === "J" )
+            //     {
+            //         $this->u_sum[ $key ] = 10;
+            //     }
+            //     else if($this->u_sum[ $key ] === "A")
+            //     {
+            //         if( array_sum( $this->u_sum ) > 10 )
+            //         {
+            //             $this->u_sum[ $key ] = 1;
+            //         }
+            //         else
+            //         {
+            //             $this->u_sum[ $key ] = 11;
+            //         };
+            //     }
+            // }
+            $this->u_sum = array_sum( $this->u_card );
+            return $this->u_sum;
         }
-        $this->d_sum = array_sum($this->d_key);
-    }
-    
-    public function vs()
-    {
-        echo "유저 : ".$this->u_sum."\n";
-        echo "딜러 : ".$this->d_sum."\n";
-        if ( $this->u_sum > $this->d_sum)
+        public function d_sum()
         {
-            echo "당신이 승리했습니다!\n";
+            foreach ($this->d_card as $key => $value)
+            {
+                if( $value === "K" || $value === "Q" || $value === "J")
+                {
+                    $this->d_card[ $key ] = 10;
+                }
+                else if( $value === "A" )
+                {
+                    if( array_sum( $this->d_card ) > 10 )
+                    {
+                        $this->d_card[ $key ] = 1;
+                    }
+                    else
+                    {
+                        $this->d_card[ $key ] = 11;
+                    }
+                }
+            }
+            $this->d_sum = array_sum( $this->d_card );
+            return $this->d_sum;
         }
-        else if ( $this->u_sum < $this->d_sum)
+
+        public function vs()
         {
-            echo "딜러가 승리했습니다!\n";
+            echo "당신의 카드 : ".implode(",", $this->u_card)." = ".$this->u_sum."\n";
+            echo "딜러의 카드 : ".implode(",", $this->d_card)." = ".$this->d_sum."\n";
+            if ( $this->u_sum > 21 ) {
+                echo "딜러가 승리했습니다!\n";
+            }
+            else
+            {
+                if ( $this->u_sum > $this->d_sum)
+                {
+                    echo "당신이 승리했습니다!\n";
+                }
+                else if ( $this->u_sum < $this->d_sum)
+                {
+                    echo "딜러가 승리했습니다!\n";
+                }
+                else
+                {
+                    echo "비겼습니다. 다시 한 번!\n";
+                }
+            }
         }
-        else
+
+        public function u_card_print()
         {
-            echo "비겼습니다. 다시 한 번!\n";
+            echo "당신의 카드 : ".implode(",", $this->u_card)."\n";
         }
+        
+
+        public function deck_print()
+        {
+            var_dump( $this->arr_deck );
+            var_dump( $this->u_card );
+            // var_dump( $this->u_sum );
+            var_dump( $this->d_card );
+            // var_dump( $this->d_sum );
+            // var_dump( $this->u_rand_keys );
+            // var_dump( $this->d_rand_keys );
+        }
+        // 배열에서 무작위로 2장 뽑아서 배열에서 키값으로 제거해야할듯? 근데 이게 되나...??? 무작위로 키값 뽑기?
     }
+    $obj_bj = new BlackJack();
+    $obj_bj->give_u_card();
+    $obj_bj->give_u_card();
+    $obj_bj->give_d_card();
+    $obj_bj->give_d_card();
 
-    public function deck_print()
-    {
-        // var_dump( $this->arr_deck );
-        print_r( $this->arr_u_card );
-        // echo "\n".$this->u_sum."\n";
-        // print_r($this->u_key);
-        print_r( $this->arr_d_card );
-        // print_r($this->d_key);
-        // var_dump( $this->u_rand_keys );
-        // var_dump( $this->d_rand_keys );
-    }
-}
-$obj_bj = new BlackJack();
-$obj_bj->give_u_card();
-$obj_bj->give_u_card();
-$obj_bj->give_d_card();
-$obj_bj->give_d_card();
+    $obj_bj->u_card_print();
+    $obj_bj->u_sum();
+    $obj_bj->d_sum();
+    $obj_bj->vs();
 
-$obj_bj->u_card_sum();
-$obj_bj->d_card_sum();
-// $obj_bj->u_sum();
-// $obj_bj->d_sum();
-$obj_bj->vs();
+    $obj_bj->deck_print();
 
-$obj_bj->deck_print();
-// echo '시작';
-// while(true) {
-//     print "\n";
-//     fscanf(STDIN, "%d\n", $input);        
-//     if($input === 0) {
-//         break;
-//     }
-//     echo $input;
-//     print "\n";
-//     }
-//     echo "끝!\n";
+    // $obj_bj = new BlackJack();
+    // $obj_bj->give_u_card();
+    // $obj_bj->give_u_card();
+    // $obj_bj->give_d_card();
+    // $obj_bj->give_d_card();
+    // $obj_bj->u_card_print();
+    // $obj_bj->u_sum();
+    // $obj_bj->d_sum();
+    // $obj_bj->vs();
+    // echo '시작';
+    // while(true)
+    // {
+    //     print "\n";
+    //     fscanf(STDIN, "%d\n", $input);       
+    //     if( $input === 0 )
+    //     {
+    //         break;
+    //     }
+    //     else if( $input === 1 )
+    //     {
+    //         $obj_bj->give_u_card();
+    //         $obj_bj->u_card_print();
+    //         if ( $obj_bj->d_sum() < 17 ) {
+    //             $obj_bj->d_card_print();
+    //         }
+    //         continue;
+    //     }
+    //     else if( $input === 2 ){
+    //         $obj_bj->u_sum();
+    //         $obj_bj->d_sum();
+    //         $obj_bj->vs();
+    //         break;
+    //     }
+
+    //     echo $input;
+    //     print "\n";
+    // }
+    // echo "끝!\n";
+    ?>
