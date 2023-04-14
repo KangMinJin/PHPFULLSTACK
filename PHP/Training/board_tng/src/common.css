@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.con{
+    width: 60%;
+    border: 1px solid black;
+    padding: 50px;
+    margin: auto;
+    background-color: #fff;
+    word-break: break-all;
+    border-radius: 12px;
+    /* white-space:break-spaces; */
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+th,td,tr{
+    border: 1px solid black;
+    padding: 5px;
+    
+}
+body{
+    background-color: antiquewhite;
+}
+.b_no, .b_date{
+    text-align: center;
+
+}
+.b_date{
+    width: 200px;
+}
+h1{
+    text-align: center;
+}
