@@ -6,18 +6,29 @@ for (let i = 0; i < num; i++) {
     arr[i] = i + 1;
 }
 // 2. 그 배열에서 소수만 찾아서 새로운 배열을 만들어라.
-let arr_f = arr.filter(
-    function ( a ){
-        for (let i = 2; i * i <= a; i++) {
-            if ( a % i === 0 ) {
+// let arr_f = arr.filter(
+//     function ( a ){
+//         for (let i = 2; i * i <= a; i++) {
+//             if ( a % i === 0 ) {
+//                 return false;
+//             }
+//         }
+//         return a !== 1;
+//     }
+// )
+let arr_s = arr.filter(
+    function ( val ){
+        let n = Math.sqrt( val );
+        for (let i = 2; i <= n; i++) {
+            if ( val % i === 0 ) {
                 return false;
             }
         }
-        return a !== 1;
+        return val !== 1;
     }
 )
 // 3. 그 배열을 alert로 출력하라.
-// alert( "1에서 " + num + "까지의 소수 : " + arr_f );
+alert( "1에서 " + num + "까지의 소수 : " + arr_s );
 
 // 짝수 구하기
 let arr_even = arr.filter( val => val % 2 === 0 );
