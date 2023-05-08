@@ -1,0 +1,8 @@
+.div1{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    display: inline-block;
+    background-color: aliceblue;
+    transform: translate(-50%,-50%);
+}
