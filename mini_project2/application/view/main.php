@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./common/common.css">
-    <title>main</title>
+    <link rel="stylesheet" href="/application/view/css/common.css"> <!--주소앞에 '/'를 붙이지 않으면 그 화면주소에서부터 찾아가서 불러올 수 없다!-->
+    <title>IRZR - 세상을 이리저리 둘러보자!</title>
 </head>
 
 <body>
     <div class="header">
         <!-- <div class="inner" style="width: 70%; height: 100%; padding: 10px; margin: auto;"> -->
-            <div><img src="./img/IRZR.png" style="width: 120px;" alt=""></div>
+            <div><a href="/shop/main"><img src="/application/view/img/IRZR.png" alt="IRZR" id="irzrLogo"></a></div>
             <div class="search_con">
                 <input type="search" placeholder="상품을 검색해보세요!" class="search">
                 <button type="submit" class="search_btn">
@@ -21,9 +21,17 @@
                 </button>
             </div>
             <div>
-                <a href="" class="link">로그인</a>
+                <?php
+                if (!isset($_SESSION[_STR_LOGIN_ID])) {?>
+                    <a href="/user/login" class="link">로그인</a>
+                    <?php
+                } else {?>
+                <a href="/user/logout" class="link">로그아웃</a>
+                <?php
+                }
+                ?>
                 <span> | </span>
-                <a href="" class="link">회원가입</a>
+                <a href="/user/join" class="link">회원가입</a>
                 <span> | </span>
                 <a href="" class="link">장바구니</a>
             </div>
@@ -67,22 +75,22 @@
         </div>
         <div class="carousel-inner">
         <div class="carousel-item active" style="background-color: #abe5f8;text-align: center;">
-            <img src="./img/img001.png" class="d-block w-100" alt="여름을부탁해">
+            <img src="/application/view/img/img001.png" class="d-block w-100" alt="여름을부탁해">
             <div class="carousel-caption d-none d-md-block">
             </div>
         </div>
         <div class="carousel-item">
-            <img src="./img/img002.png" class="d-block w-100" alt="가정의 달">
+            <img src="/application/view/img/img002.png" class="d-block w-100" alt="가정의 달">
             <div class="carousel-caption d-none d-md-block">
             </div>
         </div>
         <div class="carousel-item">
-            <img src="./img/img003.png" class="d-block w-100" alt="반려동물의 날">
+            <img src="/application/view/img/img003.png" class="d-block w-100" alt="반려동물의 날">
             <div class="carousel-caption d-none d-md-block">
             </div>
         </div>
         <div class="carousel-item">
-            <img src="./img/img004.png" class="d-block w-100" alt="성년의 날">
+            <img src="/application/view/img/img004.png" class="d-block w-100" alt="성년의 날">
             <div class="carousel-caption d-none d-md-block">
             </div>
         </div>
@@ -96,27 +104,27 @@
         <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <p>오늘의 특가</p>
-    <div class="parent">
+    <h1>오늘의 특가</h1>
+    <!-- <div class="parent">
         <a href="">
-            <div class="cards">
+            <div class="cards"> -->
                 <!-- <img src="https://m.tounou.co.kr/web/product/medium/202207/a743f11fe8e7b873a8d40ece892cac33.jpg" alt=""> -->
                 
-            </div>
+            <!-- </div>
         </a>
         <a href="">
-            <div class="cards">
+            <div class="cards"> -->
                 <!-- <img src="https://m.tounou.co.kr/web/product/medium/202207/a743f11fe8e7b873a8d40ece892cac33.jpg" alt=""> -->
                 
-            </div>
+            <!-- </div>
         </a>
         <a href="">
-            <div class="cards">
+            <div class="cards"> -->
                 <!-- <img src="https://m.tounou.co.kr/web/product/medium/202207/a743f11fe8e7b873a8d40ece892cac33.jpg" alt=""> -->
                 
-            </div>
+            <!-- </div>
         </a>
-    </div>
+    </div> -->
     <div class="container">
         <div class="row row-cols-xxl-3 row-cols-lg-3">
             <div class="col d-flex justify-content-center mt-3 mb-3">
@@ -289,10 +297,18 @@
             </div>
             </div>
         </div>
-        <img src="./img/up.png" class="upper" alt="">
+        <img src="/application/view/img/up.png" class="upper" alt="">
         <footer>
             <div class="footer_div">
-                <img src="./img/IRZR_s.png" alt="">
+                <img src="/application/view/img/IRZR_s.png" alt="">
+                <address>
+                    주식회사 이리저리
+                    <br>
+                    대표이사 : 냠냐미
+                    <br>
+                    주소 : 경상북도 칠곡군 왜관읍 달오2길 37
+
+                </address>
             </div>
         </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

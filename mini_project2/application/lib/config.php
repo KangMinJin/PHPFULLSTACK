@@ -18,7 +18,6 @@ define("_PATH_VIEW", "application/view/");
 define("_BASE_FILENAME_CONTROLLER", "Controller");
 define("_BASE_FILENAME_MODEL", "Model");
 
-
 define("_BASE_REDIRECT", "Location: ");
 
 define("_STR_LOGIN_ID", "u_id");

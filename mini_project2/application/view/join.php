@@ -5,29 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/application/view/css/common.css">
-    <title>IRZR - 로그인</title>
+    <title>IRZR - 회원가입</title>
 </head>
 <body>
     <div class="logoBox"><a href="/shop/main"><img src="/application/view/img/IRZR.png" id="irzrLogo" alt="IRZR"></a></div>
+    <h1>회원가입</h1>
     <div class="loginBox">
-        <form action="/user/login" method="post" id="formBox">
-            <input type="text" name="id" class="inp" id="id" placeholder="아이디">
+        <form action="/user/join" method="post">
+            <input type="text" placeholder="아이디" name="id" class="inp" >
             <br>
-            <input type="password" name="pw" id="pw" class="inp" placeholder="비밀번호">
+            <input type="password" placeholder="비밀번호" name="pw" class="inp" id="pw">
             <br>
+            <input type="password" placeholder="비밀번호 확인" name="pwChk" class="inp" id="pw">
             <br>
-            <button type="submit" id="btn1">로그인</button>
             <br>
             <p class="loginwarn"><?php echo isset($this->errMsg) ? $this->errMsg : ""; ?></p>
             <br>
+            <button type="submit" id="btn1">회원가입</button>
         </form>
-    </div>
-    <div class="loginBox2">
-        <a href="/user/join" class="link">회원가입</a>
-        <span> | </span>
-        <a href="" class="link">아이디 찾기</a>
-        <span> | </span>
-        <a href="" class="link">비밀번호 찾기</a>
     </div>
 </body>
 </html>

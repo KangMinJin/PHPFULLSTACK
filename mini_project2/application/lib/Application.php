@@ -8,8 +8,8 @@ class Application // 파일명과 같게 간다!(Java 처럼)
     // 생성자
     public function __construct() {
         $arrPath = UrlUtil::getUrlArrPath(); // 접속 url을 배열로 획득
-        $identityName = empty($arrPath[0]) ? "User" : ucfirst($arrPath[0]);
-        $action = (empty($arrPath[1]) ? "login": $arrPath[1]).ucfirst(strtolower($_SERVER["REQUEST_METHOD"]));
+        $identityName = empty($arrPath[0]) ? "Shop" : ucfirst($arrPath[0]);
+        $action = (empty($arrPath[1]) ? "main": $arrPath[1]).ucfirst(strtolower($_SERVER["REQUEST_METHOD"]));
         
         $controllerPath = _PATH_CONTROLLER.$identityName._BASE_FILENAME_CONTROLLER._EXTENSION_PHP;
         if (!file_exists($controllerPath)) {
@@ -19,7 +19,10 @@ class Application // 파일명과 같게 간다!(Java 처럼)
         
         // 해당 Controller 호출
         $controllerName = UrlUtil::replaceSlashToBackslash(_PATH_CONTROLLER.$identityName._BASE_FILENAME_CONTROLLER);
+
+        // UserController 호출
         new $controllerName($identityName, $action);
+        // new application\controller\UserController($identityName, $action); 와 똑같다.
     }
 }
 
