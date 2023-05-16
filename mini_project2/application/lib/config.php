@@ -21,4 +21,7 @@ define("_BASE_FILENAME_MODEL", "Model");
 define("_BASE_REDIRECT", "Location: ");
 
 define("_STR_LOGIN_ID", "u_id");
+
+define("_HEADER", _PATH_VIEW."header"._EXTENSION_PHP);
+define("_FOOTER", _PATH_VIEW."footer"._EXTENSION_PHP);
 ?>

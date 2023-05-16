@@ -11,60 +11,7 @@
 </head>
 
 <body>
-    <div class="header">
-        <!-- <div class="inner" style="width: 70%; height: 100%; padding: 10px; margin: auto;"> -->
-            <div><a href="/shop/main"><img src="/application/view/img/IRZR.png" alt="IRZR" id="irzrLogo"></a></div>
-            <div class="search_con">
-                <input type="search" placeholder="상품을 검색해보세요!" class="search">
-                <button type="submit" class="search_btn">
-                    <!-- <img src="./img/search.png" alt=""> -->
-                </button>
-            </div>
-            <div>
-                <?php
-                if (!isset($_SESSION[_STR_LOGIN_ID])) {?>
-                    <a href="/user/login" class="link">로그인</a>
-                    <?php
-                } else {?>
-                <a href="/user/logout" class="link">로그아웃</a>
-                <?php
-                }
-                ?>
-                <span> | </span>
-                <a href="/user/join" class="link">회원가입</a>
-                <span> | </span>
-                <a href="" class="link">장바구니</a>
-            </div>
-        <!-- </div> -->
-    </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">오늘배송</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include_once(_HEADER);?>
     <!-- 슬라이드 -->
     <div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -105,26 +52,6 @@
         </button>
     </div>
     <h1>오늘의 특가</h1>
-    <!-- <div class="parent">
-        <a href="">
-            <div class="cards"> -->
-                <!-- <img src="https://m.tounou.co.kr/web/product/medium/202207/a743f11fe8e7b873a8d40ece892cac33.jpg" alt=""> -->
-                
-            <!-- </div>
-        </a>
-        <a href="">
-            <div class="cards"> -->
-                <!-- <img src="https://m.tounou.co.kr/web/product/medium/202207/a743f11fe8e7b873a8d40ece892cac33.jpg" alt=""> -->
-                
-            <!-- </div>
-        </a>
-        <a href="">
-            <div class="cards"> -->
-                <!-- <img src="https://m.tounou.co.kr/web/product/medium/202207/a743f11fe8e7b873a8d40ece892cac33.jpg" alt=""> -->
-                
-            <!-- </div>
-        </a>
-    </div> -->
     <div class="container">
         <div class="row row-cols-xxl-3 row-cols-lg-3">
             <div class="col d-flex justify-content-center mt-3 mb-3">
@@ -298,19 +225,7 @@
             </div>
         </div>
         <img src="/application/view/img/up.png" class="upper" alt="">
-        <footer>
-            <div class="footer_div">
-                <img src="/application/view/img/IRZR_s.png" alt="">
-                <address>
-                    주식회사 이리저리
-                    <br>
-                    대표이사 : 냠냐미
-                    <br>
-                    주소 : 경상북도 칠곡군 왜관읍 달오2길 37
-
-                </address>
-            </div>
-        </footer>
+        <?php include_once(_FOOTER);?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
