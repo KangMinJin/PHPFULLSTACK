@@ -13,7 +13,7 @@ class UserModel extends Model {
         
         // pw 추가할 경우 - 동적쿼리
         if ($pwFlg) {
-            $sql .= "  and u_pw = :pw ";
+            $sql .= "  and BINARY u_pw = :pw "; // BINARY를 추가해주면 대소문자 구분해서 select한다.
         }
         
         $prepare = [
@@ -52,9 +52,31 @@ class UserModel extends Model {
             ." ) "
             ;
         $prepare = [
-            ":u_id"   => $arrUserInfo["id"]
-            ,":u_pw"  => $arrUserInfo["pw"]
-            ,":u_name"  => $arrUserInfo["name"]
+            ":u_id"    => $arrUserInfo["id"]
+            ,":u_pw"   => $arrUserInfo["pw"]
+            ,":u_name" => $arrUserInfo["name"]
+        ];
+        try {
+            $stmt = $this->conn->prepare($sql);
+            $result = $stmt->execute($prepare); // execute의 리턴값은 boolean형
+            return $result;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+    
+    // Update User
+    public function updateUser($arrUserInfo) {
+        $sql =
+            " UPDATE user_info "
+            ." SET "
+            ."  u_pw = :u_pw "
+            ." WHERE "
+            ."  u_id = :u_id "
+            ;
+        $prepare = [
+            ":u_id"  => $arrUserInfo["id"]
+            ,":u_pw" => $arrUserInfo["pw"]
         ];
         try {
             $stmt = $this->conn->prepare($sql);

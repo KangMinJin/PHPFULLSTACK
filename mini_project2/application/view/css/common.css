@@ -125,7 +125,7 @@ button:hover {
 }
 .inp {
     padding: 10px;
-    font-size: 16px;
+    font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 0;
     margin-bottom: 10px;
@@ -154,15 +154,11 @@ button:hover {
 #formBox {
     margin: 10px;
 }
-.warnMsg
-,.infoMsg {
+.warnMsg {
     font-size: 12px;
     margin-bottom: 10px;
     display: inline-block;
-    
-}
-.warnMsg {
-    color: red;
+    color: red;    
 }
 
 .siteInfo {

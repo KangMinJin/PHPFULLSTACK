@@ -17,30 +17,18 @@
     <h1>회원가입</h1>
     <div class="loginBox">
         <form action="/user/regist" method="post">
-        <span class="warnMsg" id="errMsgId">
-            <?php 
-                if (isset($this->errMsg)) {
-                    echo $this->errMsg;
-                }
-            ?>
-        </span>
-        <span class="infoMsg" id="infoId">
-            <?php 
-                // if (isset($this->errMsg)) {
-                //     echo $this->errMsg;
-                // }
-            ?>
-        </span>
-            <input type="text" placeholder="아이디(5~12글자)" name="id" class="inp" id="id">
+            <input type="text" placeholder="아이디(5~12글자)" name="id" class="inp" id="id" value=<?php echo $_POST != null? $inpPosts["id"] : ""; ?>>
             <button type="button" id="idDuplChk" onclick="chkDuplicationId();">중복체크</button>
-            <span class="warnMsg">
+            <span class="warnMsg" id="errMsgId">
+            <!-- 아이디 에러 출력 -->
             <?php if (isset($this->arrError["id"])) {
                 echo $this->arrError["id"];
             }?>
             </span>
             <br>
-            <input type="password" placeholder="비밀번호(8~20글자)" name="pw" class="inp" id="pw">
+            <input type="password" placeholder="비밀번호(대소문자,숫자,특수문자 포함 8~20글자)" name="pw" class="inp" id="pw">
             <span class="warnMsg">
+            <!-- 비밀번호 에러 출력 -->
             <?php if (isset($this->arrError["pw"])) {
                 echo $this->arrError["pw"];
             }?>
@@ -48,19 +36,20 @@
             <br>
             <input type="password" placeholder="비밀번호 확인" name="pwChk" class="inp" id="pwChk">
             <span class="warnMsg">
+            <!-- 비밀번호 불일치 에러 출력 -->
             <?php if (isset($this->arrError["pwChk"])) {
-                echo $this->arrError["pw"];
+                echo $this->arrError["pwChk"];
             }?>
             </span>
             <br>
-            <input type="text" placeholder="이름(30글자 이하)" name="name" class="inp" id="name">
+            <input type="text" placeholder="이름(30글자 이하)" name="name" class="inp" id="name" value=<?php echo $_POST != null? $inpPosts["name"] : ""; ?>>
             <span class="warnMsg">
+            <!-- 이름 에러 출력 -->
             <?php if (isset($this->arrError["name"])) {
                 echo $this->arrError["name"];
             }?>
             </span>
             <br>
-            <!-- <p class="loginwarn"><?php echo isset($this->errMsg) ? $this->errMsg : ""; ?></p> -->
             <br>
             <button type="submit" id="btn1">회원가입</button>
         </form>
