@@ -224,7 +224,7 @@
             </div>
             </div>
         </div>
-        <img src="/application/view/img/up.png" class="upper" alt="">
+        <a href="#header"><img src="/application/view/img/up.png" class="upper" alt=""></a>
         <?php include_once(_FOOTER);?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

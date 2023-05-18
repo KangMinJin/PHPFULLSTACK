@@ -109,6 +109,15 @@ footer{
     text-align: center;
     font-size: 0;
 }
+.formBox {
+    position: relative;
+}
+.formBox i {
+    position: absolute;
+    left: 75%;
+    top: 27px;
+    color: orange;
+}
 .loginBox2 {
     margin: auto;
     margin-top: 50px;
@@ -130,9 +139,7 @@ button:hover {
     border-radius: 0;
     margin-bottom: 10px;
 }
-#id {
-    width: 70%;
-}
+
 #btn1
 ,#idDuplChk {
     border: none;
@@ -142,6 +149,7 @@ button:hover {
     background-color: #00d1ff;
     color: #fff;
     font-weight: 900;
+    margin-bottom: 10px;
 }
 #idDuplChk {
     width: 30%;

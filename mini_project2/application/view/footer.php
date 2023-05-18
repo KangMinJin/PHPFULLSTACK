@@ -1,6 +1,7 @@
 <footer>
     <div class="footer_div">
         <img src="/application/view/img/IRZR_s.png" alt="IRZR">
+        <br>
         <span class="siteInfo">
             주식회사 이리저리
             <br>

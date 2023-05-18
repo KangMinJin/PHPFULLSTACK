@@ -13,8 +13,10 @@ class UserModel extends Model {
         
         // pw 추가할 경우 - 동적쿼리
         if ($pwFlg) {
-            $sql .= "  and BINARY u_pw = :pw "; // BINARY를 추가해주면 대소문자 구분해서 select한다.
+            $sql .= "  and BINARY u_pw = :pw "
+                    ."   and del_flg = '0' "; // BINARY를 추가해주면 대소문자 구분해서 select한다.
         }
+
         
         $prepare = [
             ":id"   => $arrUserInfo["id"]
@@ -86,5 +88,29 @@ class UserModel extends Model {
             return false;
         }
     }
+
+    // Update Del_Flg
+    public function updateDelFlg ($arrUserInfo) {
+        $sql =
+            " UPDATE user_info "
+            ." SET "
+            ."  del_flg = '1' "
+            ." WHERE "
+            ."  u_id = :u_id "
+            ."  and u_pw = :u_pw "
+            ;
+        $prepare = [
+            ":u_id"  => $arrUserInfo["id"]
+            ,":u_pw" => $arrUserInfo["pw"]
+        ];
+        try {
+            $stmt = $this->conn->prepare($sql);
+            $result = $stmt->execute($prepare); // execute의 리턴값은 boolean형
+            return $result;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+    
 }
 ?>

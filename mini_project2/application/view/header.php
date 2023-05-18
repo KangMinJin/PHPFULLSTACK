@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header" id="header">
     <div><a href="/shop/main"><img src="/application/view/img/IRZR.png" alt="IRZR" id="irzrLogo"></a></div>
     <div class="search_con">
         <input type="search" placeholder="상품을 검색해보세요!" class="search">

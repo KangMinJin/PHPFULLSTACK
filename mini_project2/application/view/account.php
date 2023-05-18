@@ -15,7 +15,7 @@
     <br>
     <span> 이름 : </span><?php echo $this->userInfo["u_name"];?>
     <br>
-    <form action="/user/account" method="post">
+    <!-- <form action="/user/account" method="post">
         <label for="pw">비밀번호 : </label>
         <input type="password" name="pw" placeholder="비밀번호(8~20글자)" id="pw" value="<?php echo $this->userInfo["u_pw"];?>">
         <br>
@@ -23,7 +23,9 @@
         <input type="password" name="pw" placeholder="비밀번호 확인" id="pwChk" value="<?php echo $this->userInfo["u_pw"];?>">
         <br>
         <button type="submit">수정</button>
-    </form>
+    </form> -->
+    <button type="button" onclick="location.href='/user/edit'">비밀번호 수정</button>
+    <button type="button" onclick="location.href='/user/withdrawal'">회원탈퇴</button>
     <?php include_once(_FOOTER);?>
 </body>
 </html>

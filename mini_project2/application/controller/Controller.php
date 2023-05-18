@@ -48,7 +48,7 @@ class Controller {
     // 파라미터를 확인해서 해당하는 view를 리턴하거나, redirect
     protected function getView($view) {
         // view 체크
-        if (strpos($view, _BASE_REDIRECT) === 0) {
+        if (strpos($view, _BASE_REDIRECT) === 0) { // 리다이렉트 여부 확인
             header($view);
             exit();
         }
