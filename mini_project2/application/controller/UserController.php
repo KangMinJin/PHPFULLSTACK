@@ -11,8 +11,20 @@ class UserController extends Controller {
         $this->model->close(); // DB 파기
 
         // 유저 유무 체크
+        if ($_POST["id"]==="") {
+            $errMsg = "<strong>아이디</strong>를 입력해주세요.";
+            $this->addDynamicProperty("errMsg", $errMsg);
+            // 로그인 페이지로 이동
+            return "login"._EXTENSION_PHP;
+        }
+        if ($_POST["pw"]==="") {
+            $errMsg = "<strong>비밀번호</strong>를 입력해주세요.";
+            $this->addDynamicProperty("errMsg", $errMsg);
+            // 로그인 페이지로 이동
+            return "login"._EXTENSION_PHP;
+        }
         if (count($result) === 0) {
-            $errMsg = "입력하신 회원 정보가 존재하지 않습니다.";
+            $errMsg = "아이디 또는 비밀번호를 잘못 입력하셨습니다.";
             $this->addDynamicProperty("errMsg", $errMsg);
             // 로그인 페이지로 이동
             return "login"._EXTENSION_PHP;
@@ -43,6 +55,30 @@ class UserController extends Controller {
     public function registGet () {
         return "regist"._EXTENSION_PHP;
     }
+
+    // 패스워드 영문대소문자 숫자 특수문자 체크
+    public function chkPw($arrPost) {
+        // * 영어대소문자, 숫자, 특수문자가 각각 하나씩 들어가고 길이가 8~20이어야하는 정규식
+        $pwPattern = "/^(?=.*[a-z]{1})(?=.*[A-Z]{1})(?=.*[\`\~\!\@\#\$\%\^\&\*\(\)\+\=\-\_]{1})(?=.*[0-9]{1}).{8,20}$/u";
+        // * 정규식 내의 특수문자는 '\'를 넣어주면 문자열 그대로 사용 할 수 있다. 그리고 혹시모를 오류 방지하기 위해서도 '\'사용!
+        $result = preg_match($pwPattern, $arrPost);
+        return $result;
+    }
+
+    // 아이디 영문 숫자 특수문자 체크
+    public function chkID($arrPost) {
+        $pattern = "/[^a-zA-Z0-9\_]{5,12}$/u";
+        // * 영어대소문자, 숫자, '_' 정규식 ('^'가 붙으면 부정 -> 영어대소문자, 숫자, _ 이외의 문자가 들어가면 체크된다!)
+        $result = preg_match($pattern, $arrPost);
+        return $result;
+    }
+
+    public function chkName($arrPost) {
+        // 이름 한글, 영어 대소문자만 입력 가능하게.
+        $namePattern = "/[a-zA-Z가-힣]{1,30}$/u"; // * 영어대소문자, 숫자, '_' 정규식 ('^'가 붙으면 부정 -> 영어대소문자, 숫자, _ 이외의 문자가 들어가면 체크된다!)
+        $result = preg_match($namePattern, $arrPost);
+        return $result;
+    }
     
     public function registPost () {
         // 유효성 체크
@@ -61,18 +97,14 @@ class UserController extends Controller {
             $arrPost["id"] = "";
         }
 
-        // 아이디 영문대소문자 숫자 특수문자 체크(추가 예정)
-        $pattern = "/[^a-zA-Z0-9_]/"; // * 영어대소문자, 숫자, '_' 정규식 ('^'가 붙으면 부정 -> 영어대소문자, 숫자, _ 이외의 문자가 들어가면 체크된다!)
-
-        if (preg_match($pattern, $arrPost["id"]) !== 0) {
+        // 아이디 영문 숫자 특수문자 체크
+        if ($this->chkID($arrPost["id"]) !== 0) {
             $arrChkErr["id"] = "아이디는 영어 대소문자, 숫자, _ 만 사용할 수 있습니다.";
             $arrPost["id"] = "";
         }
 
-        // 패스워드 영문대소문자 숫자 특수문자 체크(추가 예정)
-        // * 영어대소문자, 숫자, 특수문자가 각각 하나씩 들어가고 길이가 8~20이어야하는 정규식
-        $pwPattern = "/^(?=.*[a-z]{1})(?=.*[A-Z]{1})(?=.*[!@#$%^*+=-]{1})(?=.*[0-9]{1}).{8,20}$/";
-        if (preg_match($pwPattern, $arrPost["pw"]) === 0) {
+        // 패스워드 영문대소문자 숫자 특수문자 체크
+        if ($this->chkPw($arrPost["pw"]) === 0) {
             $arrChkErr["pw"] = "비밀번호는 영어 대소문자, 숫자, 특수문자를<br>각각 하나 이상 사용하여 작성해주세요.";
         }
         
@@ -90,6 +122,13 @@ class UserController extends Controller {
         // 이름 글자수 체크
         if (mb_strlen($arrPost["name"]) === 0 || mb_strlen($arrPost["name"]) > 30 ) { // DB에 제한되어 있는 길이만큼 아이디 길이 설정 체크
             $arrChkErr["name"] = "이름은 30글자 이하로 입력해 주세요.";
+            $arrPost["name"] = "";
+        }
+
+        // 이름 유효성 체크
+        if ($this->chkName($arrPost["name"]) === 0) {
+            $arrChkErr["name"] = "이름은 한글 혹은 영문으로만 입력해주세요.";
+            $arrPost["name"] = "";
         }
 
         // 유효성체크 에러일 경우
@@ -98,6 +137,7 @@ class UserController extends Controller {
             $this->addDynamicProperty("arrError", $arrChkErr);
             return "regist"._EXTENSION_PHP;
         }
+
         // *Transaction Start
         $this->model->beginTransaction();
         
@@ -138,15 +178,26 @@ class UserController extends Controller {
         
         
         // ! -------------------------------
+        // 비밀번호 수정
         public function editPost() {
+            $id = ["id" => $_SESSION[_STR_LOGIN_ID]];
+            $result = $this->model->getUser($id,false);
             $arrPost = $_POST;
             $arrPost["id"] = $_SESSION[_STR_LOGIN_ID];
             $arrChkErr = []; // 에러 메세지 담을 배열
+
+            if ($_POST["originPw"] === "") {
+                $arrChkErr["originPw"] = "비밀번호를 입력해주세요";
+                $this->addDynamicProperty("arrError", $arrChkErr);
+                return "edit"._EXTENSION_PHP;
+            }
+            if ($arrPost["originPw"] !== $result[0]["u_pw"]) {
+                $arrChkErr["originPw"] = "비밀번호가 일치하지 않습니다.";
+                // return "edit"._EXTENSION_PHP;
+            }
             
-            // 패스워드 영문대소문자 숫자 특수문자 체크(추가 예정)
-            // * 영어대소문자, 숫자, 특수문자가 각각 하나씩 들어가고 길이가 8~20이어야하는 정규식
-            $pwPattern = "/^(?=.*[a-z]{1})(?=.*[A-Z]{1})(?=.*[!@#$%^*+=-]{1})(?=.*[0-9]{1}).{8,20}$/";
-            if (preg_match($pwPattern, $arrPost["pw"]) === 0) {
+            // 패스워드 영문대소문자 숫자 특수문자 체크
+            if ($this->chkPw($arrPost["pw"]) === 0) {
                 $arrChkErr["pw"] = "비밀번호는 영어 대소문자, 숫자, 특수문자를<br>각각 하나 이상 사용하여 작성해주세요.";
             }
             
@@ -169,7 +220,8 @@ class UserController extends Controller {
             
             // *Transaction Start
             $this->model->beginTransaction();
-            // User Insert
+
+            // User Update
             if(!$this->model->updateUser($arrPost)) {
                 $this->model->rollback(); // 예외처리 롤백
                 echo "User Edit ERROR";
@@ -200,6 +252,7 @@ class UserController extends Controller {
             }
             $this->model->beginTransaction();
 
+            // User Delete
             if(!$this->model->updateDelFlg($arrPost)) {
                 $this->model->rollback(); // 예외처리 롤백
                 echo "User Delete ERROR";
@@ -212,6 +265,10 @@ class UserController extends Controller {
             $this->model->commit(); // 정상처리 커밋
             return "main"._EXTENSION_PHP;
             // 메인 페이지 리턴
+        }
+    
+        public function cartGet() {
+            return "cart"._EXTENSION_PHP;
         }
     }
 ?>

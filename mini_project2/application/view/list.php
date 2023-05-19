@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+이 파일은 제가 참고할 용으로 남깁니다...
+<!-- <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -15,4 +16,4 @@
         }
     </script>
 </body>
-</html>
+</html> -->

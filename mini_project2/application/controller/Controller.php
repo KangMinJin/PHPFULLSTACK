@@ -8,7 +8,7 @@ use \AllowDynamicProperties;
 class Controller {
     protected $model;
     private static $modelList = [];
-    private static $arrNeedAuth = ["user/account"];
+    private static $arrNeedAuth = ["user/account", "user/edit", "user/withdrawal", "user/cart"];
 
     // 생성자
     public function __construct($identityName, $action){

@@ -9,23 +9,21 @@
     <title>IRZR - 마이페이지</title>
 </head>
 <body>
-    <?php include_once(_HEADER);?>
-    <h1>내 정보</h1>
-    <span> 아이디 : </span><?php echo $this->userInfo["u_id"];?>
-    <br>
-    <span> 이름 : </span><?php echo $this->userInfo["u_name"];?>
-    <br>
-    <!-- <form action="/user/account" method="post">
-        <label for="pw">비밀번호 : </label>
-        <input type="password" name="pw" placeholder="비밀번호(8~20글자)" id="pw" value="<?php echo $this->userInfo["u_pw"];?>">
-        <br>
-        <label for="pwChk">비밀번호 확인 : </label>
-        <input type="password" name="pw" placeholder="비밀번호 확인" id="pwChk" value="<?php echo $this->userInfo["u_pw"];?>">
-        <br>
-        <button type="submit">수정</button>
-    </form> -->
-    <button type="button" onclick="location.href='/user/edit'">비밀번호 수정</button>
-    <button type="button" onclick="location.href='/user/withdrawal'">회원탈퇴</button>
+    <div id="mainCon">
+        <?php include_once(_HEADER);?>
+        <h1>내 정보</h1>
+        <div id="contents">
+            <span> 아이디 : </span><?php echo $this->userInfo["u_id"];?>
+            <br>
+            <span> 이름 : </span><?php echo $this->userInfo["u_name"];?>
+            <br>
+            <div id="btnCon">
+                <button type="button" id="btn2" onclick="location.href='/user/edit'">비밀번호 수정</button>
+                <button type="button" id="btn3" onclick="location.href='/user/withdrawal'">회원탈퇴</button>
+            </div>
+        </div>
+    </div>
     <?php include_once(_FOOTER);?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
