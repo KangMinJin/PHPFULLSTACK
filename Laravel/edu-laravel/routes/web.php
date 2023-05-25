@@ -182,3 +182,8 @@ GET|HEAD        tasks/{task}/edit ........ tasks.edit › TasksController@edit
 // --------------------
 use App\Http\Controllers\BladeController;
 Route::get('/blade', [BladeController::class, 'index'])->name('blade.index');
+
+use App\Http\Controllers\BoardController;
+// Route::get('/board', [BoardController::class, 'index'])->name('board.index');
+// ! Controller 만들때 --resource 옵션을 줬으므로 위처럼 하나하나 쓰지 말고 아래와 같이 사용한다!
+Route::resource('/board', BoardController::class);
