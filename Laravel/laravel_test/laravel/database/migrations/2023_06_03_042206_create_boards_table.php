@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
     /**
@@ -13,16 +14,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('boards', function (Blueprint $table) {
+            // id(pk), title, content, created_at, updated_at, deleted_at, delete_flg, write_user_id
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken(); // 로그인 유지
+            $table->string('title', 30);
+            $table->string('content', 2000);
             $table->timestamps();
-            $table->softDeletes(); // Eloquent 사용 안 해도 사용 가능
+            $table->softDeletes();
             $table->char('delete_flg', 1)->default('0');
+            // $table->bigInteger('write_user_id');
+            $table->foreignId('write_user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('boards');
     }
 };
