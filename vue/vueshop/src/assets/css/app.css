@@ -1,0 +1,109 @@
+* {
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    background-image: url("../underwater_n.jpg");
+    background-size : cover;
+    height: 100vh;
+}
+.sMsg{
+    position: absolute;
+    top: 82px;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 64px;
+    background-color: #0a275e;
+    color: #fff;
+    text-align: left;
+    padding: 10px;
+}
+.icon{
+    margin-top: 50px;
+}
+.nav{
+    list-style: none;
+    /* background-color: #6495ed; */
+    text-align: center;
+    padding: 20px;
+}
+.nav a{
+    margin: 0 20px;
+    color: #fff;
+    font-weight: 900;
+    text-decoration: none;
+}
+.nav a:hover{
+    color: #0a275e;
+    transition: .2s;
+}
+
+.prod{
+    height: 300px;
+    width: 350px;
+    background-color: #fff;
+    border-radius: 5px;
+    display: block;
+    margin: 0 20px;
+    padding: 20px;
+}
+.prod img
+,.prod h4{
+    cursor: pointer;
+}
+
+.wrap{
+    display: flex;
+    justify-content: center;
+    margin: 50px auto;
+}
+.bg_black{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+}
+.bg_white{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 400px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 50px;
+}
+.bg_white button{
+    background-color: #dbeeff;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    /* margin-left: 10px; */
+}
+.bg_white button:hover{
+    transition: .2s;
+    background-color: #aad7ff;
+}
+.bg_white .exit{
+    position: absolute;
+    right: 50px;
+    font-size: 1.5em;
+    background: none;
+}
+.bg_white .exit:hover{
+    color: #ccc;
+    transition: .2s;
+    background: none;
+}
+.bg_white span{
+    margin: 0 10px;
+}
