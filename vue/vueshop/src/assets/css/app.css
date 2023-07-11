@@ -8,7 +8,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: #000;
     background-image: url("../underwater_n.jpg");
     background-size : cover;
     height: 100vh;
@@ -16,14 +16,14 @@
 .sMsg{
     position: absolute;
     top: 82px;
-    left: 70%;
+    left: calc(50% + 170px);
     transform: translate(-50%, -50%);
-    width: 300px;
+    /* width: 240px; */
     height: 64px;
     background-color: #0a275e;
     color: #fff;
     text-align: left;
-    padding: 10px;
+    padding: 10px 20px;
 }
 .icon{
     margin-top: 50px;
@@ -62,7 +62,7 @@
 .wrap{
     display: flex;
     justify-content: center;
-    margin: 50px auto;
+    margin: 40px auto;
 }
 .bg_black{
     position: absolute;
@@ -93,6 +93,11 @@
     transition: .2s;
     background-color: #aad7ff;
 }
+.bg_white input {
+    width: 2.7em;
+    background-color: #d5ebff;
+    padding: 10px
+}
 .bg_white .exit{
     position: absolute;
     right: 50px;
@@ -106,4 +111,42 @@
 }
 .bg_white span{
     margin: 0 10px;
+}
+
+.discount {
+    background-color: #ffffd6;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 1.5em;
+}
+
+/* .startTransition {
+    opacity: 0;
+    transition: all .2s;
+}
+.endTransition {
+    opacity: 1;
+} */
+/* 등장 애니메이션 */
+.modalTransition-enter-from {
+    opacity: 0;
+}
+.modalTransition-enter-active {
+    transition: all .2s;
+}
+.modalTransition-enter-to {
+    opacity: 1;
+}
+/* 퇴장 애니메이션 */
+.modalTransition-leave-from {
+    opacity: 1;
+    /* transform: translate(0px); */
+}
+.modalTransition-leave-active {
+    transition: all .2s;
+}
+.modalTransition-leave-to {
+    opacity: 0;
+    /* transform: translate(1620px); */
 }
