@@ -19,7 +19,9 @@
         <div v-if="$store.state.tabFlg == 2">
             <div class="upload-img" :class="$store.state.filter" :style="{ backgroundImage : `url('${$store.state.imgUrl}')`}"></div>
             <div>
+                <!-- <textarea v-model="$store.state.content" name="content" id="content" class="write-box" placeholder="글쓰세요"></textarea> -->
                 <textarea name="content" id="content" class="write-box" placeholder="글쓰세요"></textarea>
+                <!-- <p>{{ $store.state.content }}</p> -->
             </div>
         </div>
     </div>

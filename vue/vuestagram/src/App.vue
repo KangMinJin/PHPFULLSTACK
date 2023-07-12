@@ -11,6 +11,9 @@
             <li class="header-button header-button-right" v-if="$store.state.tabFlg == 1" @click="$store.commit('changeTabFlg', 2)">
                 다음
             </li>
+            <li class="header-button header-button-right" v-if="$store.state.tabFlg == 2" @click="$store.dispatch('writeContent');">
+                작성
+            </li>
         </ul>
     </div>
     
@@ -22,7 +25,7 @@
     <!-- 푸터 -->
     <div class="footer">
         <div class="footer-button-store">
-            <label for="file" class="label-store">+</label>
+                <label for="file" class="label-store">+</label>
             <input @change="updateImg" accept="image/*" type="file" id="file" class="input-file">
         </div>
     </div>
@@ -36,12 +39,15 @@
             this.$store.dispatch('getMainList');
         },
         methods:{
-            updateImg(e) { //이벤트가 발생했을 때의 데이터가 e에 담긴다.
+            updateImg(e) { //이벤트가 발생했을 때의 데이터가 e에 담긴다.(자바스크립트가 자동으로 저장)
                 let file = e.target.files; // 이벤트가 발생했을 때 저장된 파일 가져옴
-                // console.log(e.target);
+                // let imgFile = file[0];
                 // console.log(e.target.value);
+                // console.log(imgFile);
                 let imgUrl = URL.createObjectURL(file[0]); // 브라우저에 이미지를 임시 저장
+                // let imgFile = new FileReader(imgUrl);
                 this.$store.commit('changeImgUrl', imgUrl);
+                this.$store.commit('changeimgFile', file[0]);
                 this.$store.commit('changeTabFlg', 1)
                 e.target.value = '';
             },
