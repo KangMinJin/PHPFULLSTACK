@@ -38,10 +38,10 @@ body{
     height: 36px;
     width: 36px;
     border: none;
-    background: radial-gradient(circle at 3% 0%, #ffffff, #fffbe3, #ece4ff 20%, #ffe0e6, #e0f6ff, #ffffff);
+    background-color: #8bdeff;
 }
 .list{
-    background-color: beige;
+    background: radial-gradient(circle at 97% 0%, #ffffff, #fffbe3, #ffe0e6 20%, #ece4ff, #e0f6ff, #ffffff);
     padding: 20px;
     border-radius: 20px;
 }
