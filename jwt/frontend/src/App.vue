@@ -21,6 +21,11 @@ export default {
         console.log(res.data);
         this.token = res.data.token;
       })
+      .catch(err => {
+        if (err.status >= 400) {
+          console.log(err);
+        }
+      })
     }
   },
 }
